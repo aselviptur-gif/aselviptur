@@ -216,3 +216,40 @@ img { -webkit-user-drag: none; }
 
 /* --- YAĞ GİBİ KAYDIRMA --- */
 html { scroll-behavior: smooth; }
+/* --- MOBIL VIP RÖTUŞLARI --- */
+@media (max-width: 768px) {
+    /* 1. Hero Kısmındaki Yazıların Kaymasını Önle */
+    .hero-content h2 {
+        font-size: 1.8rem; /* Yazıyı biraz küçült ki ekrana sığsın */
+        padding: 0 15px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    /* 2. Videonun Mobilde Tam Oturmasını Sağla */
+    .hero-video {
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    /* 3. Menüdeki Kaymaları Engelle */
+    .nav-links {
+        display: none; /* Mobilde menüyü gizleyip 'Hamburger' menüye geçmek profesyoneldir */
+    }
+
+    /* 4. Eğer Yanlara Doğru Taşıma (Yatay Kayma) Varsa Bunu Kullan */
+    body, html {
+        overflow-x: hidden; /* Sağ-sol kaymasını kesin olarak engeller */
+        width: 100%;
+    }
+
+    /* 5. Butonun Boyutunu Ayarla */
+    .btn-gold {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+}
