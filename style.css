@@ -331,3 +331,89 @@ html { scroll-behavior: smooth; }
     width: 20px;
     text-align: center;
 }
+/* Routes Section Styles */
+.routes-section {
+    padding: 60px 20px;
+    background-color: #000; /* Asil Siyah */
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-title {
+    text-align: center;
+    color: #D4AF37; /* Altın Sarısı */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.routes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.route-card {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.route-card:hover {
+    transform: translateY(-10px);
+    border-color: #D4AF37;
+}
+
+.route-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.route-content {
+    padding: 20px;
+}
+
+.route-content h3 {
+    color: #D4AF37;
+    margin-top: 0;
+}
+
+.vip-benefit {
+    background: rgba(212, 175, 55, 0.1);
+    padding: 10px;
+    border-left: 3px solid #D4AF37;
+    margin: 15px 0;
+    font-size: 0.9rem;
+}
+
+.vip-benefit span {
+    font-weight: bold;
+    color: #D4AF37;
+}
+
+.btn-book {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    background-color: #D4AF37;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.btn-book:hover {
+    background-color: #b8952e;
+}
