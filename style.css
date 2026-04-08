@@ -268,3 +268,66 @@ html { scroll-behavior: smooth; }
         font-size: 0.9rem;
     }
 }
+/* Şoför Kartı Ana Kutusu */
+.driver-card {
+    background-color: #111; /* Sitenin temasına uygun koyu arkaplan */
+    border: 1px solid #c5a059; /* Lüks görünüm için gold çerçeve */
+    border-radius: 8px;
+    overflow: hidden;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Fotoğraf Alanı */
+.driver-img-container {
+    width: 100%;
+    height: 320px; /* Fotoğrafın uzunluğu, gerekirse değiştirebilirsin */
+    overflow: hidden;
+}
+
+.driver-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* Yüzün tam ortalanması için üstten hizalar */
+}
+
+/* Bilgi ve Yazı Alanı */
+.driver-info {
+    padding: 20px;
+}
+
+.driver-info h3 {
+    color: #c5a059; /* İsim için gold renk */
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+}
+
+.driver-badge {
+    font-size: 0.9em;
+    color: #aaaaaa;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+/* Özellikler Listesi */
+.driver-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.driver-details li {
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* İkon ile yazı arasındaki boşluk */
+}
+
+.driver-details li i {
+    color: #c5a059; /* İkonların gold renkte parlaması için */
+    width: 20px;
+    text-align: center;
+}
