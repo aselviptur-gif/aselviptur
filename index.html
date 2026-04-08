@@ -2,14 +2,12 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASEL VIP | Premium Antalya Transfer</title>
- <title>Asel VIP Transfer | Antalya Lüks Maybach Ulaşım</title>
- <meta name="description" content="Antalya, Belek, Kaş ve Kemer bölgelerinde Mercedes Maybach Vito araçlarımızla 7/24 lüks VIP transfer hizmeti.">
- <meta name="keywords" content="antalya vip transfer, belek transfer, maybach vito kiralama, asel vip, lüks transfer antalya">
- 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <title>Asel VIP Transfer | Antalya Lüks Maybach Ulaşım</title>
+    
+    <meta name="description" content="Antalya, Belek, Kaş ve Kemer bölgelerinde Mercedes Maybach Vito araçlarımızla 7/24 lüks VIP transfer hizmeti.">
+    <meta name="keywords" content="antalya vip transfer, belek transfer, maybach vito kiralama, asel vip, lüks transfer antalya">
+    
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://cdn.jsdelivr.net https://npmcdn.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; frame-src https://challenges.cloudflare.com; connect-src 'self' https://formspree.io;">
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="X-Frame-Options" content="DENY">
@@ -24,13 +22,15 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
+<body>
+
 <header style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);">
     
     <div style="display: flex; justify-content: flex-end; gap: 15px; padding: 10px 20px; font-size: 0.8rem; border-bottom: 1px solid rgba(212,175,55,0.2);">
-        <span style="color: #D4AF37; cursor: pointer; font-weight: bold;">🇹🇷 TR</span>
-        <span style="color: #ccc; cursor: pointer;">🇬🇧 EN</span>
-        <span style="color: #ccc; cursor: pointer;">🇷🇺 RU</span>
-        <span style="color: #ccc; cursor: pointer;">🇩🇪 DE</span>
+        <span class="lang-btn active" onclick="setLanguage('tr', this)" style="color: #D4AF37; cursor: pointer; font-weight: bold;">🇹🇷 TR</span>
+        <span class="lang-btn" onclick="setLanguage('en', this)" style="color: #ccc; cursor: pointer;">🇬🇧 EN</span>
+        <span class="lang-btn" onclick="setLanguage('ru', this)" style="color: #ccc; cursor: pointer;">🇷🇺 RU</span>
+        <span class="lang-btn" onclick="setLanguage('de', this)" style="color: #ccc; cursor: pointer;">🇩🇪 DE</span>
     </div>
 
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 25px;">
@@ -44,26 +44,24 @@
     </div>
 </header>
 
+<section class="hero">
+    <video autoplay muted loop playsinline id="hero-video" class="hero-video">
+        <source src="bg-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    
+    <div class="live-status">
+        <i class="fa-solid fa-location-dot"></i> Antalya, TR | <span id="live-time">00:00</span> | ☀️ 26°C
+    </div>
+    
+    <div class="hero-content">
+        <h2 data-i18n="hero-title">Sınır Tanımayan Konfor</h2>
+        <p data-i18n="hero-desc">Antalya'nın lüks transfer adresi.</p>
+        <a href="#rezervasyon" class="btn-gold" data-i18n="hero-btn">ŞİMDİ REZERVASYON YAP</a>
+    </div>
+</section>
 
-
-
-    <section class="hero">
-        <video autoplay muted loop playsinline id="hero-video" class="hero-video">
-            <source src="bg-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-overlay"></div>
-        
-        <div class="live-status">
-            <i class="fa-solid fa-location-dot"></i> Antalya, TR | <span id="live-time">00:00</span> | ☀️ 26°C
-        </div>
-        
-        <div class="hero-content">
-            <h2 data-i18n="hero-title">Sınır Tanımayan Konfor</h2>
-            <p data-i18n="hero-desc">Antalya'nın lüks transfer adresi.</p>
-            <a href="#rezervasyon" class="btn-gold" data-i18n="hero-btn">ŞİMDİ REZERVASYON YAP</a>
-        </div>
-    </section>
 <section id="go-to-tours" style="background: #000; padding: 40px 20px; text-align: center; border-bottom: 1px solid #333;">
     <div style="max-width: 800px; margin: 0 auto;">
         <div style="font-size: 50px; color: #D4AF37; margin-bottom: 15px;">🗺️</div>
@@ -77,41 +75,39 @@
     </div>
 </section>
 
+<div class="stats-bar">
+    <div class="stat-item"><span class="stat-count" data-target="1500">0</span><p data-i18n="stat-1">Mutlu Misafir</p></div>
+    <div class="stat-item"><span class="stat-count" data-target="12">0</span><p data-i18n="stat-2">Lüks Araç</p></div>
+    <div class="stat-item"><span class="stat-count" data-target="24">0</span><p data-i18n="stat-3">Saat Destek</p></div>
+</div>
 
-
-    <div class="stats-bar">
-        <div class="stat-item"><span class="stat-count" data-target="1500">0</span><p data-i18n="stat-1">Mutlu Misafir</p></div>
-        <div class="stat-item"><span class="stat-count" data-target="12">0</span><p data-i18n="stat-2">Lüks Araç</p></div>
-        <div class="stat-item"><span class="stat-count" data-target="24">0</span><p data-i18n="stat-3">Saat Destek</p></div>
+<section class="section">
+    <h2 class="section-title" data-i18n="dest-title">VIP Destinasyonlar</h2>
+    <div class="dest-grid">
+        <div class="dest-card">
+            <img src="belek.jpg" alt="Belek">
+            <div class="dest-overlay"><h3>Belek & Golf Otelleri</h3></div>
+        </div>
+        <div class="dest-card">
+            <img src="kas.jpg" alt="Kaş">
+            <div class="dest-overlay"><h3>Kaş & Kalkan</h3></div>
+        </div>
+        <div class="dest-card">
+            <img src="kemer.jpg" alt="Kemer">
+            <div class="dest-overlay"><h3>Kemer Marina</h3></div>
+        </div>
     </div>
+</section>
 
-    <section class="section">
-        <h2 class="section-title" data-i18n="dest-title">VIP Destinasyonlar</h2>
-        <div class="dest-grid">
-            <div class="dest-card">
-                <img src="belek.jpg"alt="Belek">
-                <div class="dest-overlay"><h3>Belek & Golf Otelleri</h3></div>
-            </div>
-            <div class="dest-card">
-                <img src="kas.jpg" alt="Kaş">
-                <div class="dest-overlay"><h3>Kaş & Kalkan</h3></div>
-            </div>
-            <div class="dest-card">
-                <img src="kemer.jpg" alt="Kemer">
-                <div class="dest-overlay"><h3>Kemer Marina</h3></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section alt-bg">
-        <h2 class="section-title" data-i18n="treats-title">Premium İkramlar & Hizmetler</h2>
-        <div class="treats-container">
-            <div class="treat-item"><i class="fa-solid fa-bottle-water"></i><p data-i18n="treat-water">İçecek & Su</p></div>
-            <div class="treat-item"><i class="fa-solid fa-wifi"></i><p data-i18n="treat-wifi">Yüksek Hızda Wi-Fi</p></div>
-            <div class="treat-item"><i class="fa-solid fa-briefcase"></i><p data-i18n="spec-1">Business Transfer</p></div>
-            <div class="treat-item"><i class="fa-solid fa-champagne-glasses"></i><p data-i18n="spec-3">Gece Turları</p></div>
-        </div>
-    </section>
+<section class="section alt-bg">
+    <h2 class="section-title" data-i18n="treats-title">Premium İkramlar & Hizmetler</h2>
+    <div class="treats-container">
+        <div class="treat-item"><i class="fa-solid fa-bottle-water"></i><p data-i18n="treat-water">İçecek & Su</p></div>
+        <div class="treat-item"><i class="fa-solid fa-wifi"></i><p data-i18n="treat-wifi">Yüksek Hızda Wi-Fi</p></div>
+        <div class="treat-item"><i class="fa-solid fa-briefcase"></i><p data-i18n="spec-1">Business Transfer</p></div>
+        <div class="treat-item"><i class="fa-solid fa-champagne-glasses"></i><p data-i18n="spec-3">Gece Turları</p></div>
+    </div>
+</section>
 
 <div class="card driver-card">
     <div class="driver-img-container">
@@ -149,11 +145,9 @@
     </div>
 </div>
 
-
 <section class="section">
     <h2 class="section-title" data-i18n="fleet-title">Lüks Araç Filomuz</h2>
     <div class="grid-container" style="margin-bottom: 20px;">
-
         <div class="card fleet-card">
             <div class="fleet-img-container">
                 <img src="vito-114.jpg" class="main-fleet-img" alt="Mercedes Maybach Vito 114">
@@ -183,104 +177,80 @@
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 
+<div style="width: 80%; height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent); margin: 0 auto;"></div>
 
-    <div style="width: 80%; height: 1px; background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent); margin: 0 auto;"></div>
-
-    <section class="section alt-bg">
-        <h2 class="section-title" data-i18n="rev-title">Misafir Deneyimleri</h2>
-        <div class="testimonial-container">
-            <div class="testi-slide active">
-                <div class="stars">★★★★★</div>
-                <p>"Antalya seyahatimizde her şey kusursuzdu. Araç çok temiz, şoför çok kibardı."</p>
-                <span>- Alexander K. (RU)</span>
-            </div>
-            <div class="testi-slide">
-                <div class="stars">★★★★★</div>
-                <p>"Tam zamanında karşılama ve harika bir business transfer deneyimi yaşadık."</p>
-                <span>- Michael S. (EN)</span>
-            </div>
-            <div class="testi-slide">
-                <div class="stars">★★★★★</div>
-                <p>"Ailemle yaptığım en konforlu yolculuktu. Wi-Fi ve ikramlar harikaydı."</p>
-                <span>- Ayşe Y. (TR)</span>
-            </div>
+<section class="section alt-bg">
+    <h2 class="section-title" data-i18n="rev-title">Misafir Deneyimleri</h2>
+    <div class="testimonial-container">
+        <div class="testi-slide active">
+            <div class="stars">★★★★★</div>
+            <p>"Antalya seyahatimizde her şey kusursuzdu. Araç çok temiz, şoför çok kibardı."</p>
+            <span>- Alexander K. (RU)</span>
         </div>
-    </section>
-
-
-    <section class="section alt-bg">
-        <h2 class="section-title" data-i18n="rev-title">Misafir Deneyimleri</h2>
-        <div class="testimonial-container">
-            <div class="testi-slide active">
-                <div class="stars">★★★★★</div>
-                <p>"Antalya seyahatimizde her şey kusursuzdu. Araç çok temiz, şoför çok kibardı."</p>
-                <span>- Alexander K. (RU)</span>
-            </div>
-            <div class="testi-slide">
-                <div class="stars">★★★★★</div>
-                <p>"Tam zamanında karşılama ve harika bir business transfer deneyimi yaşadık."</p>
-                <span>- Michael S. (EN)</span>
-            </div>
-            <div class="testi-slide">
-                <div class="stars">★★★★★</div>
-                <p>"Ailemle yaptığım en konforlu yolculuktu. Wi-Fi ve ikramlar harikaydı."</p>
-                <span>- Ayşe Y. (TR)</span>
-            </div>
+        <div class="testi-slide">
+            <div class="stars">★★★★★</div>
+            <p>"Tam zamanında karşılama ve harika bir business transfer deneyimi yaşadık."</p>
+            <span>- Michael S. (EN)</span>
         </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title" data-i18n="faq-title">Sıkça Sorulan Sorular</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)"><span data-i18n="q1">Havalimanında sizi nasıl bulurum?</span><i class="fa-solid fa-plus"></i></div>
-                <div class="faq-answer" data-i18n="a1">Şoförünüz çıkış kapısında isminizin yazılı olduğu tabela ile sizi bekliyor olacak.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)"><span data-i18n="q2">Uçağım rötar yaparsa ne olur?</span><i class="fa-solid fa-plus"></i></div>
-                <div class="faq-answer" data-i18n="a2">Uçuşunuzu anlık takip ediyoruz, ek ücret almadan beklemeye devam ederiz.</div>
-            </div>
+        <div class="testi-slide">
+            <div class="stars">★★★★★</div>
+            <p>"Ailemle yaptığım en konforlu yolculuktu. Wi-Fi ve ikramlar harikaydı."</p>
+            <span>- Ayşe Y. (TR)</span>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="rezervasyon" class="section alt-bg">
-        <h2 class="section-title" data-i18n="form-title">VIP Rezervasyon</h2>
-        <div class="contact-container">
-            <form action="https://formspree.io/f/xojpyzyl" method="POST" class="vip-form">                <div class="input-group">
-                    <select name="music" class="vip-select">
-                        <option value="" disabled selected>🎵 Araç İçi Müzik Tercihi</option>
-                        <option value="jazz">Caz & Blues</option>
-                        <option value="classical">Klasik Müzik</option>
-                        <option value="pop">Popüler / Güncel</option>
-                        <option value="silent">Sessiz Sürüş (Silent Ride)</option>
-                    </select>
-                    <select name="scent" class="vip-select">
-                        <option value="" disabled selected>🕯️ Araç Kokusu Tercihi</option>
-                        <option value="ocean">Okyanus Ferahlığı</option>
-                        <option value="woody">Odunsu & Deri (Vip)</option>
-                        <option value="vanilla">Vanilya & Çikolata</option>
-                    </select>
-                </div>
-
-                <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-                <div class="input-group">
-                    <input type="text" name="name" id="f-name" placeholder="ADINIZ SOYADINIZ" required>
-                    <input type="email" name="email" id="f-mail" placeholder="E-POSTA" required>
-                </div>
-                <input type="text" name="tarih" id="f-date" placeholder="📅 TARİH VE SAAT SEÇİN" required>
-                <textarea name="mesaj" id="f-msg" placeholder="ÖZEL İSTEKLERİNİZ..."> 
-                
-</textarea>
-                
-                <div class="cf-turnstile" data-sitekey="BURAYA_SITE_KEY_GELECEK" data-theme="dark"></div>
-                <button type="submit" class="btn-gold" data-i18n="form-send">BİLGİLERİ GÖNDER</button>
-            </form>
+<section class="section">
+    <h2 class="section-title" data-i18n="faq-title">Sıkça Sorulan Sorular</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)"><span data-i18n="q1">Havalimanında sizi nasıl bulurum?</span><i class="fa-solid fa-plus"></i></div>
+            <div class="faq-answer" data-i18n="a1">Şoförünüz çıkış kapısında isminizin yazılı olduğu tabela ile sizi bekliyor olacak.</div>
         </div>
-    </section>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)"><span data-i18n="q2">Uçağım rötar yaparsa ne olur?</span><i class="fa-solid fa-plus"></i></div>
+            <div class="faq-answer" data-i18n="a2">Uçuşunuzu anlık takip ediyoruz, ek ücret almadan beklemeye devam ederiz.</div>
+        </div>
+    </div>
+</section>
+
+<section id="rezervasyon" class="section alt-bg">
+    <h2 class="section-title" data-i18n="form-title">VIP Rezervasyon</h2>
+    <div class="contact-container">
+        <form action="https://formspree.io/f/xojpyzyl" method="POST" class="vip-form">                
+            <div class="input-group">
+                <select name="music" class="vip-select">
+                    <option value="" disabled selected>🎵 Araç İçi Müzik Tercihi</option>
+                    <option value="jazz">Caz & Blues</option>
+                    <option value="classical">Klasik Müzik</option>
+                    <option value="pop">Popüler / Güncel</option>
+                    <option value="silent">Sessiz Sürüş (Silent Ride)</option>
+                </select>
+                <select name="scent" class="vip-select">
+                    <option value="" disabled selected>🕯️ Araç Kokusu Tercihi</option>
+                    <option value="ocean">Okyanus Ferahlığı</option>
+                    <option value="woody">Odunsu & Deri (Vip)</option>
+                    <option value="vanilla">Vanilya & Çikolata</option>
+                </select>
+            </div>
+
+            <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+            <div class="input-group">
+                <input type="text" name="name" id="f-name" placeholder="ADINIZ SOYADINIZ" required>
+                <input type="email" name="email" id="f-mail" placeholder="E-POSTA" required>
+            </div>
+            <input type="text" name="tarih" id="f-date" placeholder="📅 TARİH VE SAAT SEÇİN" required>
+            <textarea name="mesaj" id="f-msg" placeholder="ÖZEL İSTEKLERİNİZ..."></textarea>
+            
+            <div class="cf-turnstile" data-sitekey="BURAYA_SITE_KEY_GELECEK" data-theme="dark"></div>
+            <button type="submit" class="btn-gold" data-i18n="form-send">BİLGİLERİ GÖNDER</button>
+        </form>
+    </div>
+</section>
+
 <section id="trust-security" style="background: #111; padding: 60px 20px; color: #fff; border-top: 2px solid #D4AF37;">
     <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
         <h2 style="color: #D4AF37; font-size: 2rem; margin-bottom: 40px;">NEDEN ASEL VIP TUR?</h2>
@@ -301,186 +271,172 @@
         </div>
     </div>
 </section>
-    <footer class="footer-vip">
-        <h3 class="f-logo">ASEL VIP TURİZM</h3>
-        <p class="f-address">Antalya / Lara / Türkiye</p>
-        <div class="f-socials">
-            <a href="https://instagram.com/aselviptur" target="_blank" class="f-icon"><i class="fa-brands fa-instagram"></i></a>
-            <a href="mailto:aselviptur@gmail.com" class="f-icon"><i class="fa-solid fa-envelope"></i></a>
-        </div>
-        <p class="f-copyright">© 2026 ASEL VIP. ALL RIGHTS RESERVED.</p>
-    </footer>
 
-    <div class="whatsapp-bubble" onclick="location.href='https://wa.me/905352050573'">
-        <div class="bubble-text">Nasıl yardımcı olabilirim?</div><i class="fa-brands fa-whatsapp"></i>
+<footer class="footer-vip">
+    <h3 class="f-logo">ASEL VIP TURİZM</h3>
+    <p class="f-address">Antalya / Lara / Türkiye</p>
+    <div class="f-socials">
+        <a href="https://instagram.com/aselviptur" target="_blank" class="f-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:aselviptur@gmail.com" class="f-icon"><i class="fa-solid fa-envelope"></i></a>
     </div>
-    <div class="vip-fixed-action">        <div class="v-btn v-callback" onclick="openCallbackModal()">
-            <i class="fa-solid fa-headset"></i>
-            <span class="v-tooltip">Sizi Arayalım</span>
-        </div>
-<a href="tel:+905352050573" class="v-btn v-phone"><i class="fa-solid fa-phone"></i></a></div>
+    <p class="f-copyright">© 2026 ASEL VIP. ALL RIGHTS RESERVED.</p>
+</footer>
 
-    <div id="videoModal" class="modal" style="display: none;"><span class="close-modal" onclick="closeModals()">&times;</span><div class="modal-content"><video id="fleetVideo" controls width="100%"><source src="" type="video/mp4"></video></div></div>
-    <div id="imageModal" class="modal" style="display: none;"><span class="close-modal" onclick="closeModals()">&times;</span><img class="modal-content" id="expandedImg"></div>
-    <div id="driverModal" class="modal" style="display: none;"><div class="modal-content driver-modal-box"><span class="close-modal" onclick="closeModals()">&times;</span><div id="m-driver-data"></div></div></div>
+<div class="whatsapp-bubble" onclick="location.href='https://wa.me/905352050573'">
+    <div class="bubble-text">Nasıl yardımcı olabilirim?</div><i class="fa-brands fa-whatsapp"></i>
+</div>
 
-    <script>
-         // 1. TAM DONANIMLI 4 DİLLİ MOTOR
-        const translations = {
-            tr: { 
-                "hero-title": "Sınır Tanımayan Konfor", "hero-desc": "Antalya'nın lüks transfer adresi.", "hero-btn": "REZERVASYON YAP", 
-                "stat-1": "Mutlu Misafir", "stat-2": "Lüks Araç", "stat-3": "Saat Destek", 
-                "treats-title": "Premium İkramlar & Hizmetler", "treat-water": "İçecek & Su", "treat-wifi": "Yüksek Hızda Wi-Fi", 
-                "spec-1": "Business Transfer", "spec-3": "Gece Turları", "dest-title": "VIP Destinasyonlar", 
-                "fleet-title": "Filo & Ekip", "driver-title": "Uzman Şoförlerimiz", "driver-touch": "KARTVİZİT İÇİN DOKUNUN", 
-                "fleet-photos": "FOTOĞRAFLAR", "fleet-video": "VİDEO İZLE", "f1-desc": "6+1 Kapasite | Deri Koltuk | Minibar", "f2-desc": "13+1 Kapasite | TV & Wi-Fi | Geniş Bagaj",
-                "rev-title": "Misafir Deneyimleri", "faq-title": "Sıkça Sorulan Sorular", "q1": "Havalimanında sizi nasıl bulurum?", "a1": "Tabela ile çıkış kapısında bekliyoruz.", "q2": "Uçağım rötar yaparsa ne olur?", "a2": "Uçuşunuzu anlık takip ediyoruz, ek ücret almadan bekleriz.", 
-                "form-title": "VIP Rezervasyon", "form-send": "GÖNDER", "p-name": "ADINIZ SOYADINIZ", "p-mail": "E-POSTA", "p-date": "📅 TARİH VE SAAT", "p-msg": "ÖZEL İSTEKLERİNİZ..." 
-            },
-            en: { 
-                "hero-title": "Unlimited Comfort", "hero-desc": "Antalya's luxury transfer.", "hero-btn": "BOOK NOW", 
-                "stat-1": "Happy Guests", "stat-2": "Luxury Cars", "stat-3": "24/7 Support", 
-                "treats-title": "Premium Treats & Services", "treat-water": "Water & Drinks", "treat-wifi": "Fast Wi-Fi", 
-                "spec-1": "Business Transfer", "spec-3": "Night Tours", "dest-title": "VIP Destinations", 
-                "fleet-title": "Fleet & Team", "driver-title": "Our Chauffeurs", "driver-touch": "TAP FOR CARD", 
-                "fleet-photos": "PHOTOS", "fleet-video": "VIDEO", "f1-desc": "6+1 Capacity | Leather Seats | Minibar", "f2-desc": "13+1 Capacity | TV & Wi-Fi | Large Luggage",
-                "rev-title": "Guest Experiences", "faq-title": "FAQ", "q1": "How to find you?", "a1": "We wait with a sign at the exit.", "q2": "Flight delayed?", "a2": "We track it and wait for free.", 
-                "form-title": "VIP Booking", "form-send": "SEND DETAILS", "p-name": "FULL NAME", "p-mail": "EMAIL", "p-date": "📅 DATE & TIME", "p-msg": "SPECIAL REQUESTS..." 
-            },
-            ru: { 
-                "hero-title": "Комфорт Без Границ", "hero-desc": "Адрес роскошного трансфера в Анталии.", "hero-btn": "ЗАБРОНИРОВАТЬ", 
-                "stat-1": "Довольных Гостей", "stat-2": "Роскошных Авто", "stat-3": "Часов Поддержки", 
-                "treats-title": "Премиум Угощения", "treat-water": "Напитки и Вода", "treat-wifi": "Быстрый Wi-Fi", 
-                "spec-1": "Бизнес Трансфер", "spec-3": "Ночные Туры", "dest-title": "VIP Направления", 
-                "fleet-title": "Автопарк и Команда", "driver-title": "Наши Водители", "driver-touch": "НАЖМИТЕ ДЛЯ ВИЗИТКИ", 
-                "fleet-photos": "ФОТОГРАФИИ", "fleet-video": "СМОТРЕТЬ ВИДЕО", "f1-desc": "Вместимость 6+1 | Кожаные сиденья | Мини-бар", "f2-desc": "Вместимость 13+1 | ТВ и Wi-Fi | Большой багаж",
-                "rev-title": "Отзывы Гостей", "faq-title": "Частые Вопросы", "q1": "Как найти вас в аэропорту?", "a1": "Мы ждем вас на выходе с табличкой.", "q2": "Если мой рейс задержится?", "a2": "Мы отслеживаем рейс и ждем бесплатно.", 
-                "form-title": "VIP Бронирование", "form-send": "ОТПРАВИТЬ", "p-name": "ВАШЕ ИМЯ И ФАМИЛИЯ", "p-mail": "ЭЛ. ПОЧТА", "p-date": "📅 ДАТА И ВРЕМЯ", "p-msg": "ОСОБЫЕ ПОЖЕЛАНИЯ..." 
-            },
-            de: { 
-                "hero-title": "Grenzenloser Komfort", "hero-desc": "Antalyas Luxustransfer-Adresse.", "hero-btn": "JETZT BUCHEN", 
-                "stat-1": "Zufriedene Gäste", "stat-2": "Luxusautos", "stat-3": "Stunden Support", 
-                "treats-title": "Premium-Leistungen", "treat-water": "Getränke & Wasser", "treat-wifi": "Highspeed WLAN", 
-                "spec-1": "Business Transfer", "spec-3": "Nachttouren", "dest-title": "VIP-Ziele", 
-                "fleet-title": "Fuhrpark & Team", "driver-title": "Unsere Chauffeure", "driver-touch": "FÜR VISITENKARTE TIPPEN", 
-                "fleet-photos": "FOTOS", "fleet-video": "VIDEO ANSEHEN", "f1-desc": "6+1 Kapazität | Ledersitze | Minibar", "f2-desc": "13+1 Kapazität | TV & WLAN | Großes Gepäck",
-                "rev-title": "Gästeerfahrungen", "faq-title": "Häufige Fragen", "q1": "Wie finde ich Sie am Flughafen?", "a1": "Wir warten am Ausgang mit einem Namensschild.", "q2": "Was ist bei Flugverspätung?", "a2": "Wir verfolgen den Flug und warten ohne Aufpreis.", 
-                "form-title": "VIP-Buchung", "form-send": "SENDEN", "p-name": "NAME UND NACHNAME", "p-mail": "E-MAIL", "p-date": "📅 DATUM & UHRZEIT", "p-msg": "BESONDERE WÜNSCHE..." 
+<div class="vip-fixed-action">
+    <div class="v-btn v-callback" onclick="openCallbackModal()">
+        <i class="fa-solid fa-headset"></i>
+        <span class="v-tooltip">Sizi Arayalım</span>
+    </div>
+    <a href="tel:+905352050573" class="v-btn v-phone"><i class="fa-solid fa-phone"></i></a>
+</div>
+
+<div id="videoModal" class="modal" style="display: none;"><span class="close-modal" onclick="closeModals()">&times;</span><div class="modal-content"><video id="fleetVideo" controls width="100%"><source src="" type="video/mp4"></video></div></div>
+<div id="imageModal" class="modal" style="display: none;"><span class="close-modal" onclick="closeModals()">&times;</span><img class="modal-content" id="expandedImg"></div>
+<div id="driverModal" class="modal" style="display: none;"><div class="modal-content driver-modal-box"><span class="close-modal" onclick="closeModals()">&times;</span><div id="m-driver-data"></div></div></div>
+
+<script>
+    const translations = {
+        tr: { 
+            "hero-title": "Sınır Tanımayan Konfor", "hero-desc": "Antalya'nın lüks transfer adresi.", "hero-btn": "REZERVASYON YAP", 
+            "stat-1": "Mutlu Misafir", "stat-2": "Lüks Araç", "stat-3": "Saat Destek", 
+            "treats-title": "Premium İkramlar & Hizmetler", "treat-water": "İçecek & Su", "treat-wifi": "Yüksek Hızda Wi-Fi", 
+            "spec-1": "Business Transfer", "spec-3": "Gece Turları", "dest-title": "VIP Destinasyonlar", 
+            "fleet-title": "Lüks Araç Filomuz", "driver-title": "Uzman Şoförlerimiz", "driver-touch": "KARTVİZİT İÇİN DOKUNUN", 
+            "fleet-photos": "FOTOĞRAFLAR", "fleet-video": "VİDEO İZLE", "f1-desc": "7+1 VIP Kapasite | Deri Koltuk | Minibar", "f2-desc": "7+1 Ultra Lüks Konfor | Deri Koltuk | Minibar",
+            "rev-title": "Misafir Deneyimleri", "faq-title": "Sıkça Sorulan Sorular", "q1": "Havalimanında sizi nasıl bulurum?", "a1": "Şoförünüz çıkış kapısında isminizin yazılı olduğu tabela ile sizi bekliyor olacak.", "q2": "Uçağım rötar yaparsa ne olur?", "a2": "Uçuşunuzu anlık takip ediyoruz, ek ücret almadan beklemeye devam ederiz.", 
+            "form-title": "VIP Rezervasyon", "form-send": "BİLGİLERİ GÖNDER", "p-name": "ADINIZ SOYADINIZ", "p-mail": "E-POSTA", "p-date": "📅 TARİH VE SAAT SEÇİN", "p-msg": "ÖZEL İSTEKLERİNİZ..." 
+        },
+        en: { 
+            "hero-title": "Unlimited Comfort", "hero-desc": "Antalya's luxury transfer.", "hero-btn": "BOOK NOW", 
+            "stat-1": "Happy Guests", "stat-2": "Luxury Cars", "stat-3": "24/7 Support", 
+            "treats-title": "Premium Treats & Services", "treat-water": "Water & Drinks", "treat-wifi": "Fast Wi-Fi", 
+            "spec-1": "Business Transfer", "spec-3": "Night Tours", "dest-title": "VIP Destinations", 
+            "fleet-title": "Our Luxury Fleet", "driver-title": "Our Chauffeurs", "driver-touch": "TAP FOR CARD", 
+            "fleet-photos": "PHOTOS", "fleet-video": "VIDEO", "f1-desc": "7+1 Capacity | Leather Seats | Minibar", "f2-desc": "7+1 Ultra Luxury | Leather Seats | Minibar",
+            "rev-title": "Guest Experiences", "faq-title": "FAQ", "q1": "How to find you?", "a1": "We wait with a sign at the exit.", "q2": "Flight delayed?", "a2": "We track it and wait for free.", 
+            "form-title": "VIP Booking", "form-send": "SEND DETAILS", "p-name": "FULL NAME", "p-mail": "EMAIL", "p-date": "📅 SELECT DATE & TIME", "p-msg": "SPECIAL REQUESTS..." 
+        },
+        ru: { 
+            "hero-title": "Комфорт Без Границ", "hero-desc": "Адрес роскошного трансфера в Анталии.", "hero-btn": "ЗАБРОНИРОВАТЬ", 
+            "stat-1": "Довольных Гостей", "stat-2": "Роскошных Авто", "stat-3": "Часов Поддержки", 
+            "treats-title": "Премиум Угощения", "treat-water": "Напитки и Вода", "treat-wifi": "Быстрый Wi-Fi", 
+            "spec-1": "Бизнес Трансфер", "spec-3": "Ночные Туры", "dest-title": "VIP Направления", 
+            "fleet-title": "Наш Элитный Автопарк", "driver-title": "Наши Водители", "driver-touch": "НАЖМИТЕ ДЛЯ ВИЗИТКИ", 
+            "fleet-photos": "ФОТОГРАФИИ", "fleet-video": "СМОТРЕТЬ ВИДЕО", "f1-desc": "Вместимость 7+1 | Кожаные сиденья | Мини-бар", "f2-desc": "7+1 Ультра Люкс | Кожаные сиденья | Мини-бар",
+            "rev-title": "Отзывы Гостей", "faq-title": "Частые Вопросы", "q1": "Как найти вас в аэропорту?", "a1": "Мы ждем вас на выходе с табличкой.", "q2": "Если мой рейс задержится?", "a2": "Мы отслеживаем рейс и ждем бесплатно.", 
+            "form-title": "VIP Бронирование", "form-send": "ОТПРАВИТЬ ДАННЫЕ", "p-name": "ВАШЕ ИМЯ И ФАМИЛИЯ", "p-mail": "ЭЛ. ПОЧТА", "p-date": "📅 ВЫБЕРИТЕ ДАТУ И ВРЕМЯ", "p-msg": "ОСОБЫЕ ПОЖЕЛАНИЯ..." 
+        },
+        de: { 
+            "hero-title": "Grenzenloser Komfort", "hero-desc": "Antalyas Luxustransfer-Adresse.", "hero-btn": "JETZT BUCHEN", 
+            "stat-1": "Zufriedene Gäste", "stat-2": "Luxusautos", "stat-3": "Stunden Support", 
+            "treats-title": "Premium-Leistungen", "treat-water": "Getränke & Wasser", "treat-wifi": "Highspeed WLAN", 
+            "spec-1": "Business Transfer", "spec-3": "Nachttouren", "dest-title": "VIP-Ziele", 
+            "fleet-title": "Unser Luxus-Fuhrpark", "driver-title": "Unsere Chauffeure", "driver-touch": "FÜR VISITENKARTE TIPPEN", 
+            "fleet-photos": "FOTOS", "fleet-video": "VIDEO ANSEHEN", "f1-desc": "7+1 Kapazität | Ledersitze | Minibar", "f2-desc": "7+1 Ultra Luxus | Ledersitze | Minibar",
+            "rev-title": "Gästeerfahrungen", "faq-title": "Häufige Fragen", "q1": "Wie finde ich Sie am Flughafen?", "a1": "Wir warten am Ausgang mit einem Namensschild.", "q2": "Was ist bei Flugverspätung?", "a2": "Wir verfolgen den Flug und warten ohne Aufpreis.", 
+            "form-title": "VIP-Buchung", "form-send": "DATEN SENDEN", "p-name": "NAME UND NACHNAME", "p-mail": "E-MAIL", "p-date": "📅 DATUM & UHRZEIT WÄHLEN", "p-msg": "BESONDERE WÜNSCHE..." 
+        }
+    };
+
+    // Çift fonksiyon hatasını düzeltip tek bir sağlam fonksiyon yazdık
+    function setLanguage(lang, btn) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerText = translations[lang][key];
+            } else if (translations['tr'][key]) {
+                el.innerText = translations['tr'][key]; 
             }
-        };
-
-
-        function setLanguage(lang, btn) {
-            // 1. Yazıları Çevir (Bulamazsa TR'yi kullan)
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    el.innerText = translations[lang][key];
-                } else if (translations['tr'][key]) {
-                    el.innerText = translations['tr'][key]; 
-                }
-            });
-
-            // 2. Form Alanlarını Çevir (Hata korumalı)
-            const safeLang = (translations[lang] && translations[lang]['p-name']) ? lang : 'tr';
-            const fName = document.getElementById('f-name');
-            const fMail = document.getElementById('f-mail');
-            const fDate = document.getElementById('f-date');
-            const fMsg = document.getElementById('f-msg');
-
-            if(fName) fName.placeholder = translations[safeLang]['p-name'];
-            if(fMail) fMail.placeholder = translations[safeLang]['p-mail'];
-            if(fDate) fDate.placeholder = translations[safeLang]['p-date'];
-            if(fMsg) fMsg.placeholder = translations[safeLang]['p-msg'];
-            
-            // 3. Altın Rengi Aktif Butonu Değiştir
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            if(btn) btn.classList.add('active');
-        }
-
-        function setLanguage(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) el.innerText = translations[lang][key];
-            });
-            document.getElementById('f-name').placeholder = translations[lang]['p-name'] || translations['tr']['p-name'];
-            document.getElementById('f-mail').placeholder = translations[lang]['p-mail'] || translations['tr']['p-mail'];
-            document.getElementById('f-msg').placeholder = translations[lang]['p-msg'] || translations['tr']['p-msg'];
-            
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            if(event) event.target.classList.add('active');
-        }
-
-        // 2. Canlı Saat
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
-            document.getElementById('live-time').textContent = timeString;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        // 3. Yorum Slider Sistemi
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.testi-slide');
-        function showSlides() {
-            slides.forEach(s => s.classList.remove('active'));
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}
-            slides[slideIndex-1].classList.add('active');
-            setTimeout(showSlides, 5000); // 5 saniyede bir değişir
-        }
-        if(slides.length > 0) showSlides();
-
-        // 4. Lüks Takvim (Flatpickr) Başlatıcı
-        flatpickr("#f-date", {
-            enableTime: true,
-            dateFormat: "d.m.Y H:i",
-            time_24hr: true,
-            minDate: "today"
         });
 
-        // Diğer Fonksiyonlar (Loader, Modallar, SSS, Güvenlik)
-        function hideLoader() { setTimeout(() => { document.getElementById("loader").style.opacity = "0"; setTimeout(() => { document.getElementById("loader").style.display = "none"; }, 500); }, 1500); }
-        function toggleFAQ(el) { el.parentElement.classList.toggle('active'); }
-        function openDriverModal(name, role, img, desc, phone, email) {
-            const modal = document.getElementById("driverModal"); modal.style.display = "block";
-            document.getElementById("m-driver-data").innerHTML = `<img src="${img}" style="width:120px; height:120px; border-radius:50%; border:2px solid #D4AF37; margin-bottom:15px; object-fit:cover;"><h3 style="color:#D4AF37; font-family:'Cinzel'; margin-bottom:5px;">${name}</h3><h4 style="color:#fff; font-weight:300; margin-bottom:15px; font-size:0.9rem;">${role}</h4><p style="color:#aaa; margin-bottom:25px; font-size:0.9rem;">${desc}</p><div style="display:flex; flex-direction:column; gap:10px;"><a href="tel:${phone}" style="background:#0a0a0a; color:#D4AF37; display:block; padding:15px; border:1px solid #D4AF37; text-decoration:none; font-weight:bold;"><i class="fa-solid fa-phone"></i> HEMEN ARA</a><a href="mailto:${email}" style="background:#0a0a0a; color:#fff; display:block; padding:15px; border:1px solid #333; text-decoration:none;"><i class="fa-solid fa-envelope"></i> E-POSTA</a></div>`;
-        }
-        function openVideoModal(src) { const v = document.getElementById("fleetVideo"); v.src = src; document.getElementById("videoModal").style.display = "block"; v.play(); }
-        function openGalleryModal(src) { document.getElementById("imageModal").style.display = "block"; document.getElementById("expandedImg").src = src; }
-        function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = "none"); const v = document.getElementById("fleetVideo"); v.pause(); v.src = ""; }
+        const safeLang = (translations[lang] && translations[lang]['p-name']) ? lang : 'tr';
+        const fName = document.getElementById('f-name');
+        const fMail = document.getElementById('f-mail');
+        const fDate = document.getElementById('f-date');
+        const fMsg = document.getElementById('f-msg');
+
+        if(fName) fName.placeholder = translations[safeLang]['p-name'];
+        if(fMail) fMail.placeholder = translations[safeLang]['p-mail'];
+        if(fDate) fDate.placeholder = translations[safeLang]['p-date'];
+        if(fMsg) fMsg.placeholder = translations[safeLang]['p-msg'];
         
-        const counters = document.querySelectorAll('.stat-count');
-        counters.forEach(counter => { const updateCount = () => { const target = +counter.getAttribute('data-target'); const count = +counter.innerText; const inc = target / 100; if (count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 20); } else { counter.innerText = target + "+"; } }; updateCount(); });
+        // Buton renklerini sıfırla ve tıklanana aktifleştir
+        document.querySelectorAll('.lang-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.color = '#ccc';
+            b.style.borderBottom = 'none';
+        });
+        if(btn) {
+            btn.classList.add('active');
+            btn.style.color = '#D4AF37';
+        }
+    }
 
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = function(e) { if(e.keyCode == 123) return false; };
-  // Altın İmleç Hareket Kodları
-const cursorDot = document.createElement("div");
-cursorDot.id = "cursor-dot";
-const cursorOutline = document.createElement("div");
-cursorOutline.id = "cursor-outline";
-document.body.appendChild(cursorDot);
-document.body.appendChild(cursorOutline);
+    function updateClock() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('live-time').textContent = timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-window.addEventListener("mousemove", (e) => {
-    cursorDot.style.left = `${e.clientX}px`;
-    cursorDot.style.top = `${e.clientY}px`;
-    cursorOutline.animate({
-        left: `${e.clientX - 20}px`,
-        top: `${e.clientY - 20}px`
-    }, { duration: 500, fill: "forwards" });
-});
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.testi-slide');
+    function showSlides() {
+        slides.forEach(s => s.classList.remove('active'));
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].classList.add('active');
+        setTimeout(showSlides, 5000); 
+    }
+    if(slides.length > 0) showSlides();
 
-// Sizi Arayalım Modal Fonksiyonu
-function openCallbackModal() {
-    openDriverModal('Sizi Arayalım', 'VIP Müşteri Hattı', 'logo.png', 'Numaranızı bırakın, operasyon ekibimiz sizi 2 dakika içinde arasın.', '+905352050573', 'aselviptur@gmail.com');
-}
+    flatpickr("#f-date", {
+        enableTime: true,
+        dateFormat: "d.m.Y H:i",
+        time_24hr: true,
+        minDate: "today"
+    });
 
-  
-    </script>
+    function hideLoader() { setTimeout(() => { const l = document.getElementById("loader"); if(l) { l.style.opacity = "0"; setTimeout(() => { l.style.display = "none"; }, 500); } }, 1500); }
+    function toggleFAQ(el) { el.parentElement.classList.toggle('active'); }
+    function openDriverModal(name, role, img, desc, phone, email) {
+        const modal = document.getElementById("driverModal"); modal.style.display = "block";
+        document.getElementById("m-driver-data").innerHTML = `<img src="${img}" style="width:120px; height:120px; border-radius:50%; border:2px solid #D4AF37; margin-bottom:15px; object-fit:cover;"><h3 style="color:#D4AF37; font-family:'Cinzel'; margin-bottom:5px;">${name}</h3><h4 style="color:#fff; font-weight:300; margin-bottom:15px; font-size:0.9rem;">${role}</h4><p style="color:#aaa; margin-bottom:25px; font-size:0.9rem;">${desc}</p><div style="display:flex; flex-direction:column; gap:10px;"><a href="tel:${phone}" style="background:#0a0a0a; color:#D4AF37; display:block; padding:15px; border:1px solid #D4AF37; text-decoration:none; font-weight:bold;"><i class="fa-solid fa-phone"></i> HEMEN ARA</a><a href="mailto:${email}" style="background:#0a0a0a; color:#fff; display:block; padding:15px; border:1px solid #333; text-decoration:none;"><i class="fa-solid fa-envelope"></i> E-POSTA</a></div>`;
+    }
+    function openVideoModal(src) { const v = document.getElementById("fleetVideo"); v.src = src; document.getElementById("videoModal").style.display = "block"; v.play(); }
+    function openGalleryModal(src) { document.getElementById("imageModal").style.display = "block"; document.getElementById("expandedImg").src = src; }
+    function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = "none"); const v = document.getElementById("fleetVideo"); v.pause(); v.src = ""; }
     
-    
+    const counters = document.querySelectorAll('.stat-count');
+    counters.forEach(counter => { const updateCount = () => { const target = +counter.getAttribute('data-target'); const count = +counter.innerText; const inc = target / 100; if (count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 20); } else { counter.innerText = target + "+"; } }; updateCount(); });
+
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = function(e) { if(e.keyCode == 123) return false; };
+
+    const cursorDot = document.createElement("div");
+    cursorDot.id = "cursor-dot";
+    const cursorOutline = document.createElement("div");
+    cursorOutline.id = "cursor-outline";
+    document.body.appendChild(cursorDot);
+    document.body.appendChild(cursorOutline);
+
+    window.addEventListener("mousemove", (e) => {
+        cursorDot.style.left = `${e.clientX}px`;
+        cursorDot.style.top = `${e.clientY}px`;
+        cursorOutline.animate({
+            left: `${e.clientX - 20}px`,
+            top: `${e.clientY - 20}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+
+    function openCallbackModal() {
+        openDriverModal('Sizi Arayalım', 'VIP Müşteri Hattı', 'logo.png', 'Numaranızı bırakın, operasyon ekibimiz sizi 2 dakika içinde arasın.', '+905352050573', 'aselviptur@gmail.com');
+    }
+</script>
 </body>
 </html>
