@@ -3,89 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antalya Kültür Rotaları | Asel VIP Tur</title>
-    <link rel="stylesheet" href="stil.css"> 
+    <title>VIP Rotalar ve Turlar | Asel VIP Tur</title>
     <style>
-        /* Sayfa boş kalmasın diye temel VIP renklerini buraya da sabitledim */
-        body {
-            background-color: #000;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-        }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { text-align: center; color: #D4AF37; font-size: 2.5rem; letter-spacing: 2px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); border-color: #D4AF37; }
+        .img { height: 200px; background-size: cover; background-position: center; background-color: #222; }
+        .content { padding: 20px; }
+        .content h3 { color: #D4AF37; margin-top: 0; }
+        .benefit { background: rgba(212, 175, 55, 0.1); padding: 10px; border-left: 3px solid #D4AF37; margin: 15px 0; font-size: 0.9rem; }
+        .btn { display: block; text-align: center; background: #D4AF37; color: #000; text-decoration: none; padding: 12px; border-radius: 5px; font-weight: bold; }
     </style>
 </head>
 <body>
-
-<section id="cultural-routes" class="routes-section">
     <div class="container">
-        <h2 class="section-title" style="text-align: center; color: #D4AF37; padding-top: 40px;">Antalya Kültür Rotaları</h2>
-        <p class="section-subtitle" style="text-align: center; color: #ccc;">Tarihin kalbine lüks ve konforla yolculuk yapın.</p>
-
-        <div class="routes-grid">
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('images/perge.jpg');"></div>
-                <div class="route-content">
-                    <h3>Perge Antik Kenti</h3>
-                    <p>Roma’nın ihtişamlı sütunlu caddelerinde tarihin izini sürün.</p>
-                    <div class="vip-benefit">
-                        <span>Asel VIP Farkı:</span> Havalimanından direkt ulaşım ve özel karşılama.
-                    </div>
-                    <a href="https://wa.me/905XXXXXXXXX?text=Perge%20Turu%20Hakkında%20Bilgi%20Almak%20İstiyorum" class="btn-book">Hemen Rezerve Et</a>
+        <h1 class="section-title">VIP SEYAHAT ROTALARI</h1>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="img" style="background-image: url('images/kapadokya.jpg');"></div>
+                <div class="content">
+                    <h3>Kapadokya Turu</h3>
+                    <p>Peri bacaları ve sıcak hava balonlarının masalsı dünyası.</p>
+                    <div class="benefit"><span>Asel VIP Farkı:</span> Uzun yolda yorulmayan konforlu Maybach koltuklar.</div>
+                    <a href="https://wa.me/905XXXXXXXXX" class="btn">Bilgi Al & Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('images/aspendos.jpg');"></div>
-                <div class="route-content">
-                    <h3>Aspendos Tiyatrosu</h3>
-                    <p>Dünyanın en iyi korunmuş antik tiyatrosunda kusursuz akustiği deneyimleyin.</p>
-                    <div class="vip-benefit">
-                        <span>Asel VIP Farkı:</span> Festival akşamlarına özel şoförlü protokol ulaşımı.
-                    </div>
-                    <a href="https://wa.me/905XXXXXXXXX?text=Aspendos%20Turu%20Hakkında%20Bilgi%20Almak%20İstiyorum" class="btn-book">Hemen Rezerve Et</a>
+            <div class="card">
+                <div class="img" style="background-image: url('images/efes.jpg');"></div>
+                <div class="content">
+                    <h3>Efes Antik Kenti</h3>
+                    <p>Dünya mirası Celsus Kütüphanesi ve antik Roma yaşamı.</p>
+                    <div class="benefit"><span>Asel VIP Farkı:</span> Ege kıyılarında kesintisiz Wi-Fi ve ikramlı yolculuk.</div>
+                    <a href="https://wa.me/905XXXXXXXXX" class="btn">Bilgi Al & Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('images/side.jpg');"></div>
-                <div class="route-content">
-                    <h3>Side Apollon Tapınağı</h3>
-                    <p>Gün batımını tarihin denize dokunduğu en romantik noktada karşılayın.</p>
-                    <div class="vip-benefit">
-                        <span>Asel VIP Farkı:</span> Park stresi olmadan, tapınak girişinde konforlu karşılama.
-                    </div>
-                    <a href="https://wa.me/905XXXXXXXXX?text=Side%20Turu%20Hakkında%20Bilgi%20Almak%20İstiyorum" class="btn-book">Hemen Rezerve Et</a>
+            <div class="card">
+                <div class="img" style="background-image: url('images/pamukkale.jpg');"></div>
+                <div class="content">
+                    <h3>Pamukkale Travertenleri</h3>
+                    <p>Doğanın beyaz mucizesi ve Hierapolis'in şifalı suları.</p>
+                    <div class="benefit"><span>Asel VIP Farkı:</span> Kapıdan kapıya VIP transfer ve esnek saat seçeneği.</div>
+                    <a href="https://wa.me/905XXXXXXXXX" class="btn">Bilgi Al & Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('images/termessos.jpg');"></div>
-                <div class="route-content">
-                    <h3>Termessos Antik Kenti</h3>
-                    <p>Bulutların üzerindeki bu "Kartal Yuvası" kenti keşfetmeye hazır olun.</p>
-                    <div class="vip-benefit">
-                        <span>Asel VIP Farkı:</span> Sarp dağ yollarında güçlü araçlar ve usta kaptanlar.
-                    </div>
-                    <a href="https://wa.me/905XXXXXXXXX?text=Termessos%20Turu%20Hakkında%20Bilgi%20Almak%20İstiyorum" class="btn-book">Hemen Rezerve Et</a>
-                </div>
             </div>
-
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('images/myra.jpg');"></div>
-                <div class="route-content">
-                    <h3>Myra & Noel Baba (Demre)</h3>
-                    <p>Likya kaya mezarları ve Noel Baba'nın efsanevi kilisesine yolculuk.</p>
-                    <div class="vip-benefit">
-                        <span>Asel VIP Farkı:</span> Uzun sahil yolunda Maybach konforuyla yorulmadan seyahat.
-                    </div>
-                    <a href="https://wa.me/905XXXXXXXXX?text=Demre%20Turu%20Hakkında%20Bilgi%20Almak%20İstiyorum" class="btn-book">Hemen Rezerve Et</a>
-                </div>
-            </div>
-        </div>
     </div>
-</section>
-
 </body>
 </html>
