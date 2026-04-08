@@ -113,4 +113,39 @@ function openDriverModal(name, role, img, desc, phone, email) {
 }
 function openVideoModal(src) { const v = document.getElementById("fleetVideo"); if(v) { v.src = src; document.getElementById("videoModal").style.display = "block"; v.play(); } }
 function openGalleryModal(src) { const m = document.getElementById("imageModal"); if(m) { m.style.display = "block"; document.getElementById("expandedImg").src = src; } }
-function closeModals() {
+function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = "none"); const v = document.getElementById("fleetVideo"); if(v) { v.pause(); v.src = ""; } }
+function openCallbackModal() { openDriverModal('Sizi Arayalım', 'VIP Müşteri Hattı', 'logo.png', 'Numaranızı bırakın, operasyon ekibimiz sizi 2 dakika içinde arasın.', '+905352050573', 'aselviptur@gmail.com'); }
+
+// --- 6. İSTATİSTİK SAYAÇLARI ---
+const counters = document.querySelectorAll('.stat-count');
+counters.forEach(counter => { const updateCount = () => { const target = +counter.getAttribute('data-target'); const count = +counter.innerText; const inc = target / 100; if (count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 20); } else { counter.innerText = target + "+"; } }; updateCount(); });
+
+// --- 7. ALTIN İMLEÇ ---
+const cursorDot = document.createElement("div"); cursorDot.id = "cursor-dot";
+const cursorOutline = document.createElement("div"); cursorOutline.id = "cursor-outline";
+document.body.appendChild(cursorDot); document.body.appendChild(cursorOutline);
+window.addEventListener("mousemove", (e) => {
+    cursorDot.style.left = `${e.clientX}px`; cursorDot.style.top = `${e.clientY}px`;
+    cursorOutline.animate({ left: `${e.clientX - 20}px`, top: `${e.clientY - 20}px` }, { duration: 500, fill: "forwards" });
+});
+
+// --- 8. SAĞ TIK ENGELİ ---
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.onkeydown = function(e) { if(e.keyCode == 123) return false; };
+
+// --- 9. AÇILIŞ EKRANI (LOADER) GİZLEME (GARANTİLİ KOD BURADA) ---
+function hideLoader() { 
+    const loader = document.getElementById("loader"); 
+    if(loader) { 
+        loader.style.opacity = "0"; 
+        setTimeout(() => { 
+            loader.style.display = "none"; 
+        }, 500); 
+    } 
+}
+
+// Sayfa yüklendiğinde kapat
+window.addEventListener('load', hideLoader);
+
+// Ne olursa olsun, 3 saniye sonra ekranı kesinlikle kapat
+setTimeout(hideLoader, 3000); 
