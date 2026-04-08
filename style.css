@@ -73,8 +73,23 @@ img { -webkit-user-drag: none; }
 .person-role { display: block; color: #a0a0a0; font-size: 0.8rem; margin-top: 10px; }
 
 .fleet-card { padding: 0; }
-.fleet-img-container { position: relative; height: 220px; }
-.main-fleet-img { width: 100%; height: 100%; object-fit: cover; pointer-events: auto; }
+/* Resimleri ve rozeti tutan ana kutu */
+.fleet-img-container {
+    position: relative; /* MAYBACH rozetinin resmin üzerinde düzgün durması için önemli */
+    width: 100%;
+    overflow: hidden; 
+}
+
+/* Araç resimlerinin kendi ayarı */
+.main-fleet-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9; /* Fotoğrafları sinematik 16:9 oranında gösterir, kesilmeyi önler */
+    object-fit: cover; /* Resmi yamultmadan kutuya tam oturtur */
+    display: block;
+    border-radius: 8px 8px 0 0; /* Kart tasarımına uygun olarak sadece üst köşeleri hafif yuvarlatır */
+}
+
 .fleet-badge { position: absolute; top: 10px; left: 10px; background: var(--vip-gold); color: #000; padding: 3px 10px; font-size: 0.7rem; font-weight: bold; border-radius: 3px; }
 .fleet-info { padding: 20px; }
 .fleet-actions { display: flex; gap: 10px; margin-top: 15px; }
