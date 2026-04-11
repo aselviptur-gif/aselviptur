@@ -1,52 +1,30 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N4EHG39W22"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-N4EHG39W22');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N4EHG39W22"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N4EHG39W22');
+    </script>
  
-   <link rel="icon" type="image/png" href="favicon.png">
-
-   
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIP Seyahat Rotaları | Asel VIP Tur</title>
+    
     <link rel="stylesheet" href="style.css?v=2.0">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        
-        /* Ana Sayfaya Dön Butonu Stilleri */
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .back-btn { color: #D4AF37; text-decoration: none; font-weight: bold; border: 1px solid #D4AF37; padding: 8px 15px; border-radius: 5px; transition: 0.3s; display: inline-block; }
-        .back-btn:hover { background: #D4AF37; color: #000; }
-        
-        .section-title { text-align: center; color: #D4AF37; font-size: 2.5rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 0; }
-        .section-subtitle { text-align: center; color: #ccc; margin-bottom: 40px; font-size: 1.1rem; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px; }
-        .card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; transition: 0.4s; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-10px); border-color: #D4AF37; box-shadow: 0 10px 30px rgba(212,175,55,0.3); }
-        .img { height: 230px; background-size: cover; background-position: center; }
-        .content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-        .content h3 { color: #D4AF37; margin: 0 0 10px 0; font-size: 1.5rem; }
-        .content p { color: #ccc; line-height: 1.5; flex-grow: 1; margin: 0; }
-        .benefit { background: rgba(212, 175, 55, 0.1); padding: 12px; border-left: 4px solid #D4AF37; margin: 20px 0; font-size: 0.9rem; }
-        .benefit span { color: #D4AF37; font-weight: bold; }
-        .btn { display: block; text-align: center; background: #D4AF37; color: #000; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: bold; text-transform: uppercase; transition: 0.3s; margin-top: auto; }
-        .btn:hover { background: #b8952e; }
+        /* Sadece bu sayfaya özel geri dönüş butonu stili */
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding: 0 20px; }
+        .back-btn { color: #D4AF37; text-decoration: none; font-weight: bold; border: 1px solid rgba(212,175,55,0.5); padding: 10px 20px; border-radius: 8px; transition: 0.3s; display: inline-block; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
+        .back-btn:hover { background: #D4AF37; color: #000; transform: translateX(-5px); }
     </style>
 </head>
-<body>
-    <div class="container">
+<body class="routes-section"> <div style="max-width: 1200px; margin: 0 auto; padding: 40px 0;">
         
         <div class="header-top">
             <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Ana Sayfaya Dön</a>
@@ -55,84 +33,85 @@
         <h1 class="section-title">VIP Rotalarımız</h1>
         <p class="section-subtitle">Türkiye'nin en seçkin destinasyonlarına sınırsız konforla seyahat edin.</p>
         
-        <div class="grid">
-            <div class="card">
-                <div class="img" style="background-image: url('https://images.unsplash.com/photo-1547127796-06bb04e4b315?q=80&w=800');"></div>
-                <div class="content">
+        <div class="routes-grid">
+            
+            <div class="route-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1547127796-06bb04e4b315?q=80&w=800');"></div>
+                <div class="route-content">
                     <h3>Kapadokya Turu</h3>
                     <p>Peri bacaları ve sıcak hava balonlarının büyüleyici dünyasında masalsı bir VIP yolculuk.</p>
-                    <div class="benefit"><span>VIP:</span> Uzun yola özel ikramlı ve yatar koltuklu Maybach servis.</div>
-                    <a href="https://wa.me/905352050573?text=Kapadokya%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn">Rezerve Et</a>
+                    <div class="vip-benefit"><span>VIP:</span> Uzun yola özel ikramlı ve yatar koltuklu Maybach servis.</div>
+                    <a href="https://wa.me/905352050573?text=Kapadokya%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="img" style="background-image: url('https://images.unsplash.com/photo-1621236304845-8d13ed0081f5?q=80&w=800');"></div>
-                <div class="content">
+            <div class="route-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1621236304845-8d13ed0081f5?q=80&w=800');"></div>
+                <div class="route-content">
                     <h3>Efes Antik Kenti</h3>
                     <p>Dünya mirası Celsus Kütüphanesi ve antik Roma'nın eşsiz lüksüne tarihi bir dokunuş.</p>
-                    <div class="benefit"><span>VIP:</span> Bölgeye hakim şoförlü özel rehberlik hizmeti seçeneği.</div>
-                    <a href="https://wa.me/905352050573?text=Efes%20Antik%20Kenti%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn">Rezerve Et</a>
+                    <div class="vip-benefit"><span>VIP:</span> Bölgeye hakim şoförlü özel rehberlik hizmeti seçeneği.</div>
+                    <a href="https://wa.me/905352050573?text=Efes%20Antik%20Kenti%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="img" style="background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=800');"></div>
-                <div class="content">
+            <div class="route-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=800');"></div>
+                <div class="route-content">
                     <h3>Pamukkale Travertenleri</h3>
                     <p>Doğanın beyaz mucizesi ve Hierapolis'in şifalı antik termal sularında arınma fırsatı.</p>
-                    <div class="benefit"><span>VIP:</span> Otelinizden direkt kapıdan kapıya özel transfer konforu.</div>
-                    <a href="https://wa.me/905352050573?text=Pamukkale%20Travertenleri%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn">Rezerve Et</a>
+                    <div class="vip-benefit"><span>VIP:</span> Otelinizden direkt kapıdan kapıya özel transfer konforu.</div>
+                    <a href="https://wa.me/905352050573?text=Pamukkale%20Travertenleri%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="img" style="background-image: url('https://images.unsplash.com/photo-1625505826533-5c80aca7d157?q=80&w=800');"></div>
-                <div class="content">
+            <div class="route-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1625505826533-5c80aca7d157?q=80&w=800');"></div>
+                <div class="route-content">
                     <h3>Perge & Aspendos</h3>
                     <p>Antalya'nın kalbinde tarihin en iyi korunmuş amfi tiyatrosu ve antik yapıları.</p>
-                    <div class="benefit"><span>VIP:</span> Havalimanından iniş anında direkt tur başlatma imkanı.</div>
-                    <a href="https://wa.me/905352050573?text=Perge%20ve%20Aspendos%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn">Rezerve Et</a>
+                    <div class="vip-benefit"><span>VIP:</span> Havalimanından iniş anında direkt tur başlatma imkanı.</div>
+                    <a href="https://wa.me/905352050573?text=Perge%20ve%20Aspendos%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="img" style="background-image: url('https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?q=80&w=800');"></div>
-                <div class="content">
+            <div class="route-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?q=80&w=800');"></div>
+                <div class="route-content">
                     <h3>Fethiye & Ölüdeniz</h3>
                     <p>Turkuaz suların ve yamaç paraşütünün merkezi Fethiye'ye lüks ve kesintisiz ulaşım.</p>
-                    <div class="benefit"><span>VIP:</span> İsteğe bağlı lüks tekne turu ve marina transferi.</div>
-                    <a href="https://wa.me/905352050573?text=Fethiye%20Ölüdeniz%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn">Rezerve Et</a>
+                    <div class="vip-benefit"><span>VIP:</span> İsteğe bağlı lüks tekne turu ve marina transferi.</div>
+                    <a href="https://wa.me/905352050573?text=Fethiye%20Ölüdeniz%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="img" style="background-image: url('https://images.unsplash.com/photo-1560647161-0524f0c78a1a?q=80&w=800');"></div>
-                <div class="content">
+            <div class="route-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1560647161-0524f0c78a1a?q=80&w=800');"></div>
+                <div class="route-content">
                     <h3>Bodrum VIP Transfer</h3>
                     <p>Ege'nin incisi, lüks yaşamın ve gece hayatının kalbi Bodrum'a konforlu seyahat.</p>
-                    <div class="benefit"><span>VIP:</span> Kesintisiz Wi-Fi, Apple TV ve premium minibar eşliğinde.</div>
-                    <a href="https://wa.me/905352050573?text=Bodrum%20VIP%20Transferi%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn">Rezerve Et</a>
+                    <div class="vip-benefit"><span>VIP:</span> Kesintisiz Wi-Fi, Apple TV ve premium minibar eşliğinde.</div>
+                    <a href="https://wa.me/905352050573?text=Bodrum%20VIP%20Transferi%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="img" style="background-image: url('https://images.unsplash.com/photo-1601222452243-7f2122604812?q=80&w=800');"></div>
-                <div class="content">
+            <div class="route-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1601222452243-7f2122604812?q=80&w=800');"></div>
+                <div class="route-content">
                     <h3>Salda Gölü Turu</h3>
                     <p>Türkiye'nin Maldivleri olarak bilinen, bembeyaz kumsalları ve turkuaz sularıyla Salda Gölü.</p>
-                    <div class="benefit"><span>VIP:</span> Fotoğraf çekimleri için özel bekleme ve serinletici ikramlar.</div>
-                    <a href="https://wa.me/905352050573?text=Salda%20Gölü%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn">Rezerve Et</a>
+                    <div class="vip-benefit"><span>VIP:</span> Fotoğraf çekimleri için özel bekleme ve serinletici ikramlar.</div>
+                    <a href="https://wa.me/905352050573?text=Salda%20Gölü%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="img" style="background-image: url('https://images.unsplash.com/photo-1527838832700-5059252407fa?q=80&w=800');"></div>
-                <div class="content">
+            <div class="route-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1527838832700-5059252407fa?q=80&w=800');"></div>
+                <div class="route-content">
                     <h3>İstanbul Şehir Turu</h3>
                     <p>İki kıtayı birleştiren metropolde, Boğaz manzarası eşliğinde protokol taşımacılığı.</p>
-                    <div class="benefit"><span>VIP:</span> Trafikten bağımsız, tamamen size özel rota planlaması.</div>
-                    <a href="https://wa.me/905352050573?text=İstanbul%20VIP%20Şehir%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn">Rezerve Et</a>
+                    <div class="vip-benefit"><span>VIP:</span> Trafikten bağımsız, tamamen size özel rota planlaması.</div>
+                    <a href="https://wa.me/905352050573?text=İstanbul%20VIP%20Şehir%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
                 </div>
             </div>
 
