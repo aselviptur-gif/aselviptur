@@ -1,170 +1,187 @@
-// --- 1. DİL MOTORU (TRANSLATIONS) ---
+// =========================================
+// 1. MASTER DİL MOTORU (TÜM SAYFALAR BİRLEŞTİRİLDİ)
+// =========================================
 const translations = {
     tr: { 
-        "hero-title": "Sınır Tanımayan Konfor", "hero-desc": "Antalya'nın lüks transfer adresi.", "hero-btn": "REZERVASYON YAP", 
-        "stat-1": "Mutlu Misafir", "stat-2": "Lüks Araç", "stat-3": "Saat Destek", 
-        "treats-title": "Premium İkramlar & Hizmetler", "treat-water": "İçecek & Su", "treat-wifi": "Yüksek Hızda Wi-Fi", 
-        "spec-1": "Business Transfer", "spec-3": "Gece Turları", "dest-title": "VIP Destinasyonlar", 
-        "fleet-title": "Lüks Araç Filomuz", "driver-title": "Uzman Şoförlerimiz", "driver-touch": "KARTVİZİT İÇİN DOKUNUN", 
-        "fleet-photos": "FOTOĞRAFLAR", "fleet-video": "VİDEO İZLE", "f1-desc": "7+1 VIP Kapasite | Deri Koltuk | Minibar", "f2-desc": "7+1 Ultra Lüks Konfor | Deri Koltuk | Minibar",
-        "rev-title": "Misafir Deneyimleri", "faq-title": "Sıkça Sorulan Sorular", "q1": "Havalimanında sizi nasıl bulurum?", "a1": "Şoförünüz çıkış kapısında isminizin yazılı olduğu tabela ile sizi bekliyor olacak.", "q2": "Uçağım rötar yaparsa ne olur?", "a2": "Uçuşunuzu anlık takip ediyoruz, ek ücret almadan beklemeye devam ederiz.", 
-        "form-title": "VIP Rezervasyon", "form-send": "BİLGİLERİ GÖNDER", "p-name": "ADINIZ SOYADINIZ", "p-mail": "E-POSTA", "p-date": "📅 TARİH VE SAAT SEÇİN", "p-msg": "ÖZEL İSTEKLERİNİZ..." 
+        // ANA SAYFA
+        "nav-tours": "ÖZEL TURLAR", "back-home": "ANA SAYFA",
+        "hero-title": "Sınır Tanımayan Konfor", "hero-desc": "Antalya'nın En Seçkin Transfer Deneyimi", "hero-btn": "VIP REZERVASYON", "hero-scroll": "Filoyu İncele",
+        "stat-1": "Mutlu Misafir", "stat-2": "Maybach Araç", "stat-3": "Saat Destek", 
+        "treats-title": "Premium Ayrıcalıklar", "treat-water": "Özel İkramlar", "treat-water-desc": "Premium içecekler.",
+        "treat-wifi": "Sınırsız Wi-Fi", "treat-wifi-desc": "Asla kopmayın.",
+        "spec-1": "Business Class", "spec-1-desc": "Prestijli giriş yapın.",
+        "spec-2": "Tam Güvenlik", "spec-2-desc": "VIP standartlar.",
+        "driver-title": "Protokol Şoförlerimiz", "driver-role": "Kıdemli VIP Şoför",
+        "d-exp": "30 Yıllık Sürüş Tecrübesi", "d-safe": "VIP Protokol Sürüşü",
+        "d-lang1": "Temel Düzey İngilizce", "d-lang2": "Rusça & İngilizce",
+        "fleet-title": "Maybach Filomuz", "f1-desc": "7+1 VIP | Deri Koltuk | İklimlendirme", "f2-desc": "Premium Deri | Çift Minibar | Apple TV", "fleet-photos": "GALERİ", 
+        "rev-title": "Misafir Deneyimleri", "faq-title": "Sıkça Sorulan Sorular", 
+        "q1": "Havalimanında sizi nasıl bulurum?", "a1": "Şoförünüz çıkış kapısında isminizin yazılı olduğu tabela ile sizi bekliyor olacak.", 
+        "q2": "Uçağım rötar yaparsa ne olur?", "a2": "Uçuşunuzu anlık takip ediyoruz, ek ücret almadan beklemeye devam ederiz.",
+        
+        // TURLAR
+        "tours-title": "VIP Rotalarımız", "tours-sub": "Türkiye'nin en seçkin destinasyonlarına sınırsız konforla seyahat edin.",
+        "t1-title": "Kapadokya Turu", "t1-desc": "Peri bacaları ve balonların dünyasında VIP yolculuk.",
+        "t2-title": "Pamukkale Turu", "t2-desc": "Beyaz travertenler ve antik havuzda arınma fırsatı.",
+        "book-btn": "Rezerve Et",
+
+        // REZERVASYON FORMU
+        "form-title": "VIP Rezervasyon", "f-submit": "Talebi Gönder",
+        "f-name": "Adınız Soyadınız", "f-phone": "Telefon Numaranız", 
+        "f-from": "Nereden Alınacaksınız?", "f-to": "Nereye Gideceksiniz?",
+        "m-opt0": "🎵 Araç İçi Müzik Tercihi", "m-opt1": "Caz & Blues", "m-opt2": "Klasik Müzik", "m-opt3": "Popüler / Güncel", "m-opt4": "Sessiz Sürüş (Silent Ride)", "m-opt5": "Damar Arabesk (VIP Özel)",
+        "s-opt0": "🕯️ Araç Kokusu Tercihi", "s-opt1": "Okyanus Ferahlığı", "s-opt2": "Odunsu & Deri (Vip)", "s-opt3": "Vanilya & Çikolata"
     },
     en: { 
-        "hero-title": "Unlimited Comfort", "hero-desc": "Antalya's luxury transfer.", "hero-btn": "BOOK NOW", 
-        "stat-1": "Happy Guests", "stat-2": "Luxury Cars", "stat-3": "24/7 Support", 
-        "treats-title": "Premium Treats & Services", "treat-water": "Water & Drinks", "treat-wifi": "Fast Wi-Fi", 
-        "spec-1": "Business Transfer", "spec-3": "Night Tours", "dest-title": "VIP Destinations", 
-        "fleet-title": "Our Luxury Fleet", "driver-title": "Our Chauffeurs", "driver-touch": "TAP FOR CARD", 
-        "fleet-photos": "PHOTOS", "fleet-video": "VIDEO", "f1-desc": "7+1 Capacity | Leather Seats | Minibar", "f2-desc": "7+1 Ultra Luxury | Leather Seats | Minibar",
-        "rev-title": "Guest Experiences", "faq-title": "FAQ", "q1": "How to find you?", "a1": "We wait with a sign at the exit.", "q2": "Flight delayed?", "a2": "We track it and wait for free.", 
-        "form-title": "VIP Booking", "form-send": "SEND DETAILS", "p-name": "FULL NAME", "p-mail": "EMAIL", "p-date": "📅 SELECT DATE & TIME", "p-msg": "SPECIAL REQUESTS..." 
+        // MAIN PAGE
+        "nav-tours": "SPECIAL TOURS", "back-home": "BACK TO HOME",
+        "hero-title": "Boundless Comfort", "hero-desc": "Antalya's Most Exclusive Transfer Experience", "hero-btn": "VIP BOOKING", "hero-scroll": "Explore Fleet",
+        "stat-1": "Happy Guests", "stat-2": "Maybach Cars", "stat-3": "Support", 
+        "treats-title": "Premium Privileges", "treat-water": "Special Treats", "treat-water-desc": "Premium beverages.",
+        "treat-wifi": "Unlimited Wi-Fi", "treat-wifi-desc": "Never disconnect.",
+        "spec-1": "Business Class", "spec-1-desc": "Make a prestigious entrance.",
+        "spec-2": "Full Security", "spec-2-desc": "VIP standards.",
+        "driver-title": "Our Protocol Chauffeurs", "driver-role": "Senior VIP Chauffeur",
+        "d-exp": "30 Years of Experience", "d-safe": "VIP Protocol Driving",
+        "d-lang1": "Basic English", "d-lang2": "Russian & English",
+        "fleet-title": "Our Maybach Fleet", "f1-desc": "7+1 VIP | Leather Seats | AC", "f2-desc": "Premium Leather | Dual Minibar | Apple TV", "fleet-photos": "GALLERY", 
+        "rev-title": "Guest Experiences", "faq-title": "FAQ", 
+        "q1": "How do I find you at the airport?", "a1": "Your chauffeur will be waiting at the exit gate with a sign with your name on it.", 
+        "q2": "What if my flight is delayed?", "a2": "We track your flight instantly and continue to wait without any additional fees.",
+        
+        // TOURS
+        "tours-title": "Our VIP Routes", "tours-sub": "Travel to Turkey's most exclusive destinations with unlimited comfort.",
+        "t1-title": "Cappadocia Tour", "t1-desc": "A VIP journey in the world of fairy chimneys and balloons.",
+        "t2-title": "Pamukkale Tour", "t2-desc": "A chance to purify in white travertines and ancient pools.",
+        "book-btn": "Book Now",
+
+        // RESERVATION FORM
+        "form-title": "VIP Booking", "f-submit": "Send Request",
+        "f-name": "Full Name", "f-phone": "Phone Number", 
+        "f-from": "Pick-up Location", "f-to": "Drop-off Location",
+        "m-opt0": "🎵 In-Car Music Preference", "m-opt1": "Jazz & Blues", "m-opt2": "Classical Music", "m-opt3": "Popular / Current", "m-opt4": "Silent Ride", "m-opt5": "Deep Arabesque (VIP Special)",
+        "s-opt0": "🕯️ Car Scent Preference", "s-opt1": "Ocean Freshness", "s-opt2": "Woody & Leather (VIP)", "s-opt3": "Vanilla & Chocolate"
     },
     ru: { 
-        "hero-title": "Комфорт Без Границ", "hero-desc": "Адрес роскошного трансфера в Анталии.", "hero-btn": "ЗАБРОНИРОВАТЬ", 
-        "stat-1": "Довольных Гостей", "stat-2": "Роскошных Авто", "stat-3": "Часов Поддержки", 
-        "treats-title": "Премиум Угощения", "treat-water": "Напитки и Вода", "treat-wifi": "Быстрый Wi-Fi", 
-        "spec-1": "Бизнес Трансфер", "spec-3": "Ночные Туры", "dest-title": "VIP Направления", 
-        "fleet-title": "Наш Элитный Автопарк", "driver-title": "Наши Водители", "driver-touch": "НАЖМИТЕ ДЛЯ ВИЗИТКИ", 
-        "fleet-photos": "ФОТОГРАФИИ", "fleet-video": "СМОТРЕТЬ ВИДЕО", "f1-desc": "Вместимость 7+1 | Кожаные сиденья | Мини-бар", "f2-desc": "7+1 Ультра Люкс | Кожаные сиденья | Мини-бар",
-        "rev-title": "Отзывы Гостей", "faq-title": "Частые Вопросы", "q1": "Как найти вас в аэропорту?", "a1": "Мы ждем вас на выходе с табличкой.", "q2": "Если мой рейс задержится?", "a2": "Мы отслеживаем рейс и ждем бесплатно.", 
-        "form-title": "VIP Бронирование", "form-send": "ОТПРАВИТЬ ДАННЫЕ", "p-name": "ВАШЕ ИМЯ И ФАМИЛИЯ", "p-mail": "ЭЛ. ПОЧТА", "p-date": "📅 ВЫБЕРИТЕ ДАТУ И ВРЕМЯ", "p-msg": "ОСОБЫЕ ПОЖЕЛАНИЯ..." 
+        // ГЛАВНАЯ
+        "nav-tours": "СПЕЦИАЛЬНЫЕ ТУРЫ", "back-home": "НА ГЛАВНУЮ",
+        "hero-title": "Комфорт Без Границ", "hero-desc": "Самый эксклюзивный трансфер в Анталии", "hero-btn": "БРОНИРОВАНИЕ", "hero-scroll": "Наш автопарк",
+        "stat-1": "Довольных Гостей", "stat-2": "Maybach Авто", "stat-3": "Поддержки", 
+        "treats-title": "Премиум Привилегии", "treat-water": "Особые Угощения", "treat-water-desc": "Премиальные напитки.",
+        "treat-wifi": "Безлимитный Wi-Fi", "treat-wifi-desc": "Всегда на связи.",
+        "spec-1": "Бизнес Класс", "spec-1-desc": "Престижное появление.",
+        "spec-2": "Безопасность", "spec-2-desc": "VIP стандарты.",
+        "driver-title": "Наши Водители", "driver-role": "Старший VIP Водитель",
+        "d-exp": "30 Лет Опыта", "d-safe": "VIP Вождение",
+        "d-lang1": "Базовый Английский", "d-lang2": "Русский и Английский",
+        "fleet-title": "Наш Парк Maybach", "f1-desc": "7+1 VIP | Кожаные Сиденья", "f2-desc": "Премиум Кожа | Apple TV", "fleet-photos": "ГАЛЕРЕЯ", 
+        "rev-title": "Отзывы Гостей", "faq-title": "Частые Вопросы", 
+        "q1": "Как мне найти вас в аэропорту?", "a1": "Ваш водитель будет ждать вас у выхода с табличкой.", 
+        "q2": "Что если мой рейс задержится?", "a2": "Мы отслеживаем рейс и ждем бесплатно.",
+        
+        // ТУРЫ
+        "tours-title": "Наши VIP Маршруты", "tours-sub": "Путешествуйте по эксклюзивным направлениям Турции с комфортом.",
+        "t1-title": "Тур в Каппадокию", "t1-desc": "VIP путешествие в мир сказочных дымоходов.",
+        "t2-title": "Тур в Памуккале", "t2-desc": "Шанс очиститься в белых травертинах.",
+        "book-btn": "Забронировать",
+
+        // БРОНИРОВАНИЕ
+        "form-title": "VIP Бронирование", "f-submit": "Отправить Запрос",
+        "f-name": "Имя и Фамилия", "f-phone": "Номер Телефона", 
+        "f-from": "Место отправления", "f-to": "Место назначения",
+        "m-opt0": "🎵 Музыка в авто", "m-opt1": "Джаз и Блюз", "m-opt2": "Классическая музыка", "m-opt3": "Популярная", "m-opt4": "Тихая поездка", "m-opt5": "Арабеск (VIP)",
+        "s-opt0": "🕯️ Запах в авто", "s-opt1": "Океанская свежесть", "s-opt2": "Древесный и кожа (VIP)", "s-opt3": "Ваниль и шоколад"
     },
     de: { 
-        "hero-title": "Grenzenloser Komfort", "hero-desc": "Antalyas Luxustransfer-Adresse.", "hero-btn": "JETZT BUCHEN", 
-        "stat-1": "Zufriedene Gäste", "stat-2": "Luxusautos", "stat-3": "Stunden Support", 
-        "treats-title": "Premium-Leistungen", "treat-water": "Getränke & Wasser", "treat-wifi": "Highspeed WLAN", 
-        "spec-1": "Business Transfer", "spec-3": "Nachttouren", "dest-title": "VIP-Ziele", 
-        "fleet-title": "Unser Luxus-Fuhrpark", "driver-title": "Unsere Chauffeure", "driver-touch": "FÜR VISITENKARTE TIPPEN", 
-        "fleet-photos": "FOTOS", "fleet-video": "VIDEO ANSEHEN", "f1-desc": "7+1 Kapazität | Ledersitze | Minibar", "f2-desc": "7+1 Ultra Luxus | Ledersitze | Minibar",
-        "rev-title": "Gästeerfahrungen", "faq-title": "Häufige Fragen", "q1": "Wie finde ich Sie am Flughafen?", "a1": "Wir warten am Ausgang mit einem Namensschild.", "q2": "Was ist bei Flugverspätung?", "a2": "Wir verfolgen den Flug und warten ohne Aufpreis.", 
-        "form-title": "VIP-Buchung", "form-send": "DATEN SENDEN", "p-name": "NAME UND NACHNAME", "p-mail": "E-MAIL", "p-date": "📅 DATUM & UHRZEIT WÄHLEN", "p-msg": "BESONDERE WÜNSCHE..." 
+        // STARTSEITE
+        "nav-tours": "SPEZIELLE TOUREN", "back-home": "ZURÜCK ZUR STARTSEITE",
+        "hero-title": "Grenzenloser Komfort", "hero-desc": "Antalyas exklusivstes Transfer-Erlebnis", "hero-btn": "VIP BUCHUNG", "hero-scroll": "Flotte Ansehen",
+        "stat-1": "Zufriedene Gäste", "stat-2": "Maybach Autos", "stat-3": "Support", 
+        "treats-title": "Premium Privilegien", "treat-water": "Besondere Leckereien", "treat-water-desc": "Premium-Getränke.",
+        "treat-wifi": "Unbegrenztes WLAN", "treat-wifi-desc": "Bleiben Sie verbunden.",
+        "spec-1": "Business Class", "spec-1-desc": "Ein prestigeträchtiger Auftritt.",
+        "spec-2": "Volle Sicherheit", "spec-2-desc": "VIP-Standards.",
+        "driver-title": "Unsere Protokoll-Chauffeure", "driver-role": "Senior VIP Chauffeur",
+        "d-exp": "30 Jahre Erfahrung", "d-safe": "VIP Protokoll Fahren",
+        "d-lang1": "Grundlegendes Englisch", "d-lang2": "Russisch & Englisch",
+        "fleet-title": "Unsere Maybach Flotte", "f1-desc": "7+1 VIP | Ledersitze", "f2-desc": "Premium Leder | Apple TV", "fleet-photos": "GALERIE", 
+        "rev-title": "Gästeerfahrungen", "faq-title": "Häufig Gestellte Fragen", 
+        "q1": "Wie finde ich Sie am Flughafen?", "a1": "Ihr Chauffeur wartet am Ausgang mit einem Namensschild.", 
+        "q2": "Was passiert bei Flugverspätungen?", "a2": "Wir verfolgen Ihren Flug und warten kostenlos.",
+        
+        // TOUREN
+        "tours-title": "Unsere VIP-Routen", "tours-sub": "Reisen Sie mit grenzenlosem Komfort zu den exklusivsten Zielen der Türkei.",
+        "t1-title": "Kappadokien-Tour", "t1-desc": "Eine VIP-Reise in die Welt der Feenkamine.",
+        "t2-title": "Pamukkale-Tour", "t2-desc": "Entspannen Sie sich in den weißen Travertinen.",
+        "book-btn": "Buchen",
+
+        // BUCHUNG
+        "form-title": "VIP Buchung", "f-submit": "Anfrage Senden",
+        "f-name": "Vor- und Nachname", "f-phone": "Telefonnummer", 
+        "f-from": "Abholort", "f-to": "Zielort",
+        "m-opt0": "🎵 Musik im Auto", "m-opt1": "Jazz & Blues", "m-opt2": "Klassische Musik", "m-opt3": "Beliebte Musik", "m-opt4": "Stille Fahrt", "m-opt5": "Arabeske (VIP)",
+        "s-opt0": "🕯️ Autoduft", "s-opt1": "Ozeanfrische", "s-opt2": "Holzig & Leder (VIP)", "s-opt3": "Vanille & Schokolade"
     }
 };
 
+// =========================================
+// 2. DİL DEĞİŞTİRİCİ FONKSİYON
+// =========================================
 function setLanguage(lang, btn) {
+    // Normal yazıları çevirir
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
             el.innerText = translations[lang][key];
-        } else if (translations['tr'][key]) {
-            el.innerText = translations['tr'][key]; 
         }
     });
 
-    const safeLang = (translations[lang] && translations[lang]['p-name']) ? lang : 'tr';
-    
-    // Form Elemanları Dil Değişimi (Güvenli Kontrol)
-    const formInputs = document.querySelectorAll('.vip-input, .vip-select');
-    formInputs.forEach(input => {
-        if(input.name === "Ad_Soyad") input.placeholder = translations[safeLang]['p-name'];
+    // Rezervasyon formundaki gri placeholder yazılarını çevirir
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+        }
     });
-    
+
+    // Seçilen dil butonunun rengini altın yapar
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.remove('active');
-        b.style.color = '#ccc';
-        b.style.borderBottom = 'none';
     });
     if(btn) {
         btn.classList.add('active');
-        btn.style.color = '#D4AF37';
     }
 }
 
-// --- 2. CANLI SAAT ---
-function updateClock() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
-    const liveTimeEl = document.getElementById('live-time');
-    if (liveTimeEl) liveTimeEl.textContent = timeString;
-}
-setInterval(updateClock, 1000);
-updateClock();
+// =========================================
+// 3. İSTATİSTİK SAYAÇ ANİMASYONU
+// =========================================
+const counters = document.querySelectorAll('.stat-num');
+const speed = 100;
 
-// --- 3. SLIDER ---
-let slideIndex = 0;
-const slides = document.querySelectorAll('.testi-slide');
-function showSlides() {
-    if(slides.length === 0) return;
-    slides.forEach(s => s.classList.remove('active'));
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}
-    slides[slideIndex-1].classList.add('active');
-    setTimeout(showSlides, 5000); 
-}
-showSlides();
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = target / speed;
 
-// --- 4. TAKVİM (FLATPICKR) ---
-if(document.getElementById("f-date")) {
-    flatpickr("#f-date", { enableTime: true, dateFormat: "d.m.Y H:i", time_24hr: true, minDate: "today" });
-}
-
-// --- 5. EKRAN MODALLARI ---
-function toggleFAQ(el) { el.parentElement.classList.toggle('active'); }
-function openDriverModal(name, role, img, desc, phone, email) {
-    const modal = document.getElementById("driverModal"); 
-    if(modal) {
-        modal.style.display = "block";
-        document.getElementById("m-driver-data").innerHTML = `<img src="${img}" style="width:120px; height:120px; border-radius:50%; border:2px solid #D4AF37; margin-bottom:15px; object-fit:cover;"><h3 style="color:#D4AF37; font-family:'Cinzel'; margin-bottom:5px;">${name}</h3><h4 style="color:#fff; font-weight:300; margin-bottom:15px; font-size:0.9rem;">${role}</h4><p style="color:#aaa; margin-bottom:25px; font-size:0.9rem;">${desc}</p><div style="display:flex; flex-direction:column; gap:10px;"><a href="tel:${phone}" style="background:#111; color:#D4AF37; display:block; padding:15px; border:1px solid rgba(212,175,55,0.5); border-radius:4px; text-decoration:none; font-weight:bold;"><i class="fa-solid fa-phone"></i> HEMEN ARA</a><a href="mailto:${email}" style="background:#0a0a0a; color:#fff; display:block; padding:15px; border:1px solid #333; border-radius:4px; text-decoration:none;"><i class="fa-solid fa-envelope"></i> E-POSTA</a></div>`;
-    }
-}
-function openVideoModal(src) { const v = document.getElementById("fleetVideo"); if(v) { v.src = src; document.getElementById("videoModal").style.display = "block"; v.play(); } }
-function openGalleryModal(src) { const m = document.getElementById("imageModal"); if(m) { m.style.display = "block"; document.getElementById("expandedImg").src = src; } }
-function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = "none"); const v = document.getElementById("fleetVideo"); if(v) { v.pause(); v.src = ""; } }
-function openCallbackModal() { openDriverModal('Sizi Arayalım', 'VIP Müşteri Hattı', 'logo.png', 'Numaranızı bırakın, operasyon ekibimiz sizi 2 dakika içinde arasın.', '+905352050573', 'aselviptur@gmail.com'); }
-
-// --- 6. İSTATİSTİK SAYAÇLARI ---
-const counters = document.querySelectorAll('.stat-count');
-counters.forEach(counter => { 
-    const updateCount = () => { 
-        const target = +counter.getAttribute('data-target'); 
-        const count = +counter.innerText; 
-        const inc = target / 100; 
-        if (count < target) { 
-            counter.innerText = Math.ceil(count + inc); 
-            setTimeout(updateCount, 20); 
-        } else { 
-            counter.innerText = target + "+"; 
-        } 
-    }; 
-    updateCount(); 
+        if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 25);
+        } else {
+            counter.innerText = target + (target > 100 ? "+" : ""); 
+        }
+    };
+    updateCount();
 });
 
-// --- 7. ALTIN İMLEÇ (Performans Optimize Edildi) ---
-// Not: Sadece masaüstü cihazlarda çalışması için kontrol eklendi
-if (window.matchMedia("(pointer: fine)").matches) {
-    const cursorDot = document.createElement("div"); cursorDot.id = "cursor-dot";
-    const cursorOutline = document.createElement("div"); cursorOutline.id = "cursor-outline";
-    document.body.appendChild(cursorDot); document.body.appendChild(cursorOutline);
-    
-    let cursorX = 0, cursorY = 0;
-    
-    window.addEventListener("mousemove", (e) => {
-        cursorX = e.clientX;
-        cursorY = e.clientY;
-        cursorDot.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-        // Daha hafif ve akıcı bir takip animasyonu
-        cursorOutline.style.transform = `translate3d(${cursorX - 20}px, ${cursorY - 20}px, 0)`;
-    });
-}
-
-// --- 8. SAĞ TIK ENGELİ ---
+// =========================================
+// 4. SİBER GÜVENLİK (KOD ÇALMA ENGELİ)
+// =========================================
 document.addEventListener('contextmenu', e => e.preventDefault());
-document.onkeydown = function(e) { if(e.keyCode == 123) return false; };
-
-// --- 9. AÇILIŞ EKRANI (LOADER) GİZLEME ---
-function hideLoader() { 
-    const loader = document.getElementById("loader"); 
-    if(loader) { 
-        loader.style.opacity = "0"; 
-        setTimeout(() => { 
-            loader.style.display = "none"; 
-        }, 500); 
-    } 
-}
-
-// Sayfa yüklendiğinde kapat
-window.addEventListener('load', hideLoader);
-
-// Ne olursa olsun, 2.5 saniye sonra ekranı kesinlikle kapat
-setTimeout(hideLoader, 2500);
+document.onkeydown = function(e) { 
+    if(e.keyCode == 123) return false; 
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; 
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; 
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; 
+};

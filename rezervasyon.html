@@ -14,6 +14,11 @@
         .back-btn { color: #D4AF37; text-decoration: none; font-weight: bold; border: 1px solid rgba(212,175,55,0.5); padding: 10px 20px; border-radius: 4px; transition: 0.3s; display: inline-block; background: rgba(0,0,0,0.5); }
         .back-btn:hover { background: #D4AF37; color: #000; transform: translateX(-5px); }
         
+        /* Dil Seçenekleri Stili */
+        .lang-menu { display: flex; gap: 15px; }
+        .lang-btn { color: #888; font-weight: bold; cursor: pointer; transition: 0.3s; font-family: 'Cinzel', serif; font-size: 0.9rem; }
+        .lang-btn.active, .lang-btn:hover { color: #D4AF37; }
+        
         /* VIP Form Kutuları - Karanlık Lüks Tema */
         .vip-input, .vip-select {
             width: 100%;
@@ -41,50 +46,58 @@
     <div style="max-width: 800px; margin: 0 auto; padding: 40px 0;">
         
         <div class="header-top">
-            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Ana Sayfaya Dön</a>
+            <a href="index.html" class="back-btn" data-i18n="back-home"><i class="fa-solid fa-arrow-left"></i> Ana Sayfaya Dön</a>
+            
+            <div class="lang-menu">
+                <span class="lang-btn active" onclick="setLanguage('tr', this)">TR</span>
+                <span class="lang-btn" onclick="setLanguage('en', this)">EN</span>
+                <span class="lang-btn" onclick="setLanguage('ru', this)">RU</span>
+                <span class="lang-btn" onclick="setLanguage('de', this)">DE</span>
+            </div>
         </div>
 
         <section id="rezervasyon" style="text-align: center;">
-            <h2 class="section-title" data-i18n="form-title" style="margin-bottom: 30px;">VIP Rezervasyon</h2>
+            <h2 class="section-title" data-i18n="form-title" style="margin-bottom: 30px; color: #D4AF37; font-family: 'Cinzel', serif;">VIP Rezervasyon</h2>
             
-            <div class="card" style="max-width: 600px; margin: 0 auto; padding: 40px 30px; text-align: left;">
+            <div class="card" style="max-width: 600px; margin: 0 auto; padding: 40px 30px; text-align: left; background: #0c0c0c; border: 1px solid rgba(212,175,55,0.15); border-radius: 12px;">
                 <form action="https://formspree.io/f/xojpyzyl" method="POST" class="vip-form">                
                     
                     <div class="input-group">
-                        <input type="text" name="Ad_Soyad" placeholder="Adınız Soyadınız" required class="vip-input">
-                        <input type="tel" name="Telefon" placeholder="Telefon Numaranız" required class="vip-input">
+                        <input type="text" name="Ad_Soyad" data-i18n-placeholder="f-name" placeholder="Adınız Soyadınız" required class="vip-input">
+                        <input type="tel" name="Telefon" data-i18n-placeholder="f-phone" placeholder="Telefon Numaranız" required class="vip-input">
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="Alinis_Noktasi" placeholder="Nereden Alınacaksınız?" required class="vip-input">
-                        <input type="text" name="Varis_Noktasi" placeholder="Nereye Gideceksiniz?" required class="vip-input">
+                        <input type="text" name="Alinis_Noktasi" data-i18n-placeholder="f-from" placeholder="Nereden Alınacaksınız?" required class="vip-input">
+                        <input type="text" name="Varis_Noktasi" data-i18n-placeholder="f-to" placeholder="Nereye Gideceksiniz?" required class="vip-input">
                     </div>
 
                     <div class="input-group">
                         <select name="music" class="vip-select">
-                            <option value="" disabled selected>🎵 Araç İçi Müzik Tercihi</option>
-                            <option value="jazz">Caz & Blues</option>
-                            <option value="classical">Klasik Müzik</option>
-                            <option value="pop">Popüler / Güncel</option>
-                            <option value="silent">Sessiz Sürüş (Silent Ride)</option>
-                            <option value="arabesque">Damar Arabesk (VIP Özel)</option>
+                            <option value="" disabled selected data-i18n="m-opt0">🎵 Araç İçi Müzik Tercihi</option>
+                            <option value="jazz" data-i18n="m-opt1">Caz & Blues</option>
+                            <option value="classical" data-i18n="m-opt2">Klasik Müzik</option>
+                            <option value="pop" data-i18n="m-opt3">Popüler / Güncel</option>
+                            <option value="silent" data-i18n="m-opt4">Sessiz Sürüş (Silent Ride)</option>
+                            <option value="arabesque" data-i18n="m-opt5">Damar Arabesk (VIP Özel)</option>
                         </select>
                     </div>
                     
                     <div class="input-group">
                         <select name="scent" class="vip-select">
-                            <option value="" disabled selected>🕯️ Araç Kokusu Tercihi</option>
-                            <option value="ocean">Okyanus Ferahlığı</option>
-                            <option value="woody">Odunsu & Deri (Vip)</option>
-                            <option value="vanilla">Vanilya & Çikolata</option>
+                            <option value="" disabled selected data-i18n="s-opt0">🕯️ Araç Kokusu Tercihi</option>
+                            <option value="ocean" data-i18n="s-opt1">Okyanus Ferahlığı</option>
+                            <option value="woody" data-i18n="s-opt2">Odunsu & Deri (Vip)</option>
+                            <option value="vanilla" data-i18n="s-opt3">Vanilya & Çikolata</option>
                         </select>
                     </div>
 
-                    <button type="submit" class="btn-book" style="width: 100%; border-radius: 6px; font-size: 16px; border: none;">Talebi Gönder</button>
+                    <button type="submit" class="btn-book" data-i18n="f-submit" style="width: 100%; border-radius: 6px; font-size: 16px; border: none; padding: 15px; background: linear-gradient(45deg, #b8860b, #D4AF37); color: #000; font-weight: bold; cursor: pointer;">Talebi Gönder</button>
                 </form>
             </div>
         </section>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
