@@ -1,123 +1,197 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N4EHG39W22"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-N4EHG39W22');
-    </script>
- 
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VIP Seyahat Rotaları | Asel VIP Tur</title>
-    
-    <link rel="stylesheet" href="style.css?v=2.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Rotalar | Asel VIP</title>
+    <link rel="stylesheet" href="vip-style.css?v=10.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        /* Sadece bu sayfaya özel geri dönüş butonu stili bırakıldı, diğer tüm çakışan kodlar silindi */
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding: 0 20px; }
-        .back-btn { color: #D4AF37; text-decoration: none; font-weight: bold; border: 1px solid rgba(212,175,55,0.5); padding: 10px 20px; border-radius: 4px; transition: 0.3s; display: inline-block; background: rgba(0,0,0,0.5); }
+        .page-container { padding-top: 100px; padding-bottom: 50px; max-width: 1200px; margin: 0 auto; }
+        .back-btn { color: #D4AF37; text-decoration: none; font-weight: bold; border: 1px solid rgba(212,175,55,0.5); padding: 10px 20px; border-radius: 4px; transition: 0.3s; display: inline-block; background: rgba(0,0,0,0.5); margin-left: 20px; margin-bottom: 30px;}
         .back-btn:hover { background: #D4AF37; color: #000; transform: translateX(-5px); }
+        .route-img { height: 250px; background-size: cover; background-position: center; border-radius: 8px 8px 0 0; }
+        /* Rota Kartları İçin Özel Ayar */
+        .tour-card { text-align: left; width: 100%; max-width: 450px; display: flex; flex-direction: column; }
+        .tour-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .tour-desc { color: #ccc; margin-bottom: 25px; flex-grow: 1; font-size: 0.95rem; line-height: 1.5; }
     </style>
 </head>
-<body class="routes-section">
-    
-    <div style="max-width: 1200px; margin: 0 auto; padding: 40px 0;">
+<body>
+
+    <header class="vip-header glass-element">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="logo.png" alt="Asel VIP"></a>
+            <div class="nav-right">
+                <div class="lang-menu">
+                    <span class="lang-btn active" onclick="setLanguage('tr', this)">TR</span><span class="lang-separator">|</span>
+                    <span class="lang-btn" onclick="setLanguage('en', this)">EN</span><span class="lang-separator">|</span>
+                    <span class="lang-btn" onclick="setLanguage('ru', this)">RU</span><span class="lang-separator">|</span>
+                    <span class="lang-btn" onclick="setLanguage('de', this)">DE</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <a href="index.html" class="back-btn" data-i18n="back-home"><i class="fa-solid fa-arrow-left"></i> ANA SAYFA</a>
         
-        <div class="header-top">
-            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Ana Sayfaya Dön</a>
+        <div class="section-heading">
+            <h2 data-i18n="tours-title">VIP Rotalarımız</h2>
+            <div class="gold-line"></div>
+            <p style="color: #ccc; margin-top: 15px;" data-i18n="tours-sub">Türkiye'nin en seçkin destinasyonlarına sınırsız konforla seyahat edin.</p>
         </div>
 
-        <h1 class="section-title">VIP Rotalarımız</h1>
-        <p class="section-subtitle" style="text-align: center; color: #ccc; margin-bottom: 40px;">Türkiye'nin en seçkin destinasyonlarına sınırsız konforla seyahat edin.</p>
-        
-        <div class="routes-grid">
+        <div class="grid-2-center" style="padding: 0 20px;">
             
-            <div class="route-card">
+            <div class="glass-card tour-card">
                 <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1547127796-06bb04e4b315?q=80&w=800');"></div>
-                <div class="route-content">
-                    <h3>Kapadokya Turu</h3>
-                    <p>Peri bacaları ve sıcak hava balonlarının büyüleyici dünyasında masalsı bir VIP yolculuk.</p>
-                    <div class="vip-benefit"><span>VIP:</span> Uzun yola özel ikramlı ve yatar koltuklu Maybach servis.</div>
-                    <a href="https://wa.me/905352050573?text=Kapadokya%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t1-title">Kapadokya Turu</h3>
+                    <p class="tour-desc" data-i18n="t1-desc">Peri bacaları ve sıcak hava balonlarının büyüleyici dünyasında masalsı bir VIP yolculuk.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1621236304845-8d13ed0081f5?q=80&w=800');"></div>
-                <div class="route-content">
-                    <h3>Efes Antik Kenti</h3>
-                    <p>Dünya mirası Celsus Kütüphanesi ve antik Roma'nın eşsiz lüksüne tarihi bir dokunuş.</p>
-                    <div class="vip-benefit"><span>VIP:</span> Bölgeye hakim şoförlü özel rehberlik hizmeti seçeneği.</div>
-                    <a href="https://wa.me/905352050573?text=Efes%20Antik%20Kenti%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
-                </div>
-            </div>
-
-            <div class="route-card">
+            <div class="glass-card tour-card">
                 <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=800');"></div>
-                <div class="route-content">
-                    <h3>Pamukkale Travertenleri</h3>
-                    <p>Doğanın beyaz mucizesi ve Hierapolis'in şifalı antik termal sularında arınma fırsatı.</p>
-                    <div class="vip-benefit"><span>VIP:</span> Otelinizden direkt kapıdan kapıya özel transfer konforu.</div>
-                    <a href="https://wa.me/905352050573?text=Pamukkale%20Travertenleri%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t2-title">Pamukkale Turu</h3>
+                    <p class="tour-desc" data-i18n="t2-desc">Bembeyaz travertenler ve Kleopatra Antik Havuzu'nda şifa ve tarihi bir arada yaşayın.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1625505826533-5c80aca7d157?q=80&w=800');"></div>
-                <div class="route-content">
-                    <h3>Perge & Aspendos</h3>
-                    <p>Antalya'nın kalbinde tarihin en iyi korunmuş amfi tiyatrosu ve antik yapıları.</p>
-                    <div class="vip-benefit"><span>VIP:</span> Havalimanından iniş anında direkt tur başlatma imkanı.</div>
-                    <a href="https://wa.me/905352050573?text=Perge%20ve%20Aspendos%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1588661642878-eb2d69f0bd66?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t3-title">Efes Antik Kenti</h3>
+                    <p class="tour-desc" data-i18n="t3-desc">Roma İmparatorluğu'nun en görkemli kalıntıları arasında tarihi bir VIP yürüyüş.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1502989642968-94fbdc9eace4?q=80&w=800');"></div>
-                <div class="route-content">
-                    <h3>Fethiye & Ölüdeniz</h3>
-                    <p>Turkuaz suların ve yamaç paraşütünün merkezi Fethiye'ye lüks ve kesintisiz ulaşım.</p>
-                    <div class="vip-benefit"><span>VIP:</span> İsteğe bağlı lüks tekne turu ve marina transferi.</div>
-                    <a href="https://wa.me/905352050573?text=Fethiye%20Ölüdeniz%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1596414343160-c3d6d031c2bb?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t4-title">Demre & Kekova</h3>
+                    <p class="tour-desc" data-i18n="t4-desc">Noel Baba'nın kilisesi ve sular altındaki antik Batık Şehir Kekova'da tekne turu imkanı.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1560647161-0524f0c78a1a?q=80&w=800');"></div>
-                <div class="route-content">
-                    <h3>Bodrum VIP Transfer</h3>
-                    <p>Ege'nin incisi, lüks yaşamın ve gece hayatının kalbi Bodrum'a konforlu seyahat.</p>
-                    <div class="vip-benefit"><span>VIP:</span> Kesintisiz Wi-Fi, Apple TV ve premium minibar eşliğinde.</div>
-                    <a href="https://wa.me/905352050573?text=Bodrum%20VIP%20Transferi%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1601614911762-b91c121e7d5d?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t5-title">Olympos & Yanartaş</h3>
+                    <p class="tour-desc" data-i18n="t5-desc">Mitolojik sönmeyen ateş Yanartaş ve antik Olympos kalıntıları arasında mistik bir akşam.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1601222452243-7f2122604812?q=80&w=800');"></div>
-                <div class="route-content">
-                    <h3>Salda Gölü Turu</h3>
-                    <p>Türkiye'nin Maldivleri olarak bilinen, bembeyaz kumsalları ve turkuaz sularıyla Salda Gölü.</p>
-                    <div class="vip-benefit"><span>VIP:</span> Fotoğraf çekimleri için özel bekleme ve serinletici ikramlar.</div>
-                    <a href="https://wa.me/905352050573?text=Salda%20Gölü%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1610663738096-76cd7ff9e49c?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t6-title">Salda Gölü</h3>
+                    <p class="tour-desc" data-i18n="t6-desc">Türkiye'nin Maldivleri olarak bilinen Salda'nın beyaz kumları ve turkuaz sularında huzur.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
                 </div>
             </div>
 
-            <div class="route-card">
-                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1527838832700-5059252407fa?q=80&w=800');"></div>
-                <div class="route-content">
-                    <h3>İstanbul Şehir Turu</h3>
-                    <p>İki kıtayı birleştiren metropolde, Boğaz manzarası eşliğinde protokol taşımacılığı.</p>
-                    <div class="vip-benefit"><span>VIP:</span> Trafikten bağımsız, tamamen size özel rota planlaması.</div>
-                    <a href="https://wa.me/905352050573?text=İstanbul%20VIP%20Şehir%20Turu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-book">Rezerve Et</a>
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1589139599557-55df9b8bbcc1?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t7-title">Fethiye & Ölüdeniz</h3>
+                    <p class="tour-desc" data-i18n="t7-desc">Dünyaca ünlü Ölüdeniz lagünü, Babadağ manzarası ve Saklıkent kanyonu keşfi.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1628172935293-176317b6a157?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t8-title">Kaş & Kalkan</h3>
+                    <p class="tour-desc" data-i18n="t8-desc">Lüks villaları, bozulmamış koyları ve Kaputaş Plajı ile Akdeniz'in en elit kaçamağı.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1622396481328-9b1b78c7f078?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t9-title">Göbeklitepe, Urfa</h3>
+                    <p class="tour-desc" data-i18n="t9-desc">İnsanlık tarihinin sıfır noktasına, medeniyetin doğduğu efsanevi tapınaklara yolculuk.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1662998634704-511ce424874e?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t10-title">Nemrut Dağı, Adıyaman</h3>
+                    <p class="tour-desc" data-i18n="t10-desc">Kommagene Krallığı'nın devasa tanrı heykelleri eşliğinde zirvede unutulmaz bir gündoğumu.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1616258055610-c44bb0c4a45a?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t11-title">Şirince & Alaçatı</h3>
+                    <p class="tour-desc" data-i18n="t11-desc">Ege'nin taş evleri, şarap tadım bağları ve rüzgar sörfü merkezlerinde elit bir haftasonu.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1558231580-c11dd82bfb37?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t12-title">Karadeniz Yaylaları</h3>
+                    <p class="tour-desc" data-i18n="t12-desc">Ayder, Uzungöl ve Fırtına Deresi'nin yemyeşil doğasında Maybach konforuyla VIP safari.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1524230572899-a752b6271960?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t13-title">İstanbul Boğazı</h3>
+                    <p class="tour-desc" data-i18n="t13-desc">Tarihi yarımada, görkemli saraylar ve Asya ile Avrupa'yı birleştiren boğazda lüks deneyim.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1418985991508-e47386d96a71?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t14-title">Uludağ, Bursa</h3>
+                    <p class="tour-desc" data-i18n="t14-desc">Kış turizminin zirvesi Uludağ'da karın ve lüks kayak otellerinin tadını çıkarın.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1574895698754-0cd3b7eb3bb5?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t15-title">Truva & Gelibolu</h3>
+                    <p class="tour-desc" data-i18n="t15-desc">Efsanevi Truva atı ve Çanakkale'nin tarihi dokusu içinde geçmişe saygı yolculuğu.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
+                </div>
+            </div>
+
+            <div class="glass-card tour-card">
+                <div class="route-img" style="background-image: url('https://images.unsplash.com/photo-1602787889377-507c5cb92d24?q=80&w=800');"></div>
+                <div class="tour-content">
+                    <h3 style="color: #D4AF37; margin-bottom: 10px;" data-i18n="t16-title">Mardin Eski Şehir</h3>
+                    <p class="tour-desc" data-i18n="t16-desc">Mezopotamya ovasına nazır taş evler, Darülzafaran ve Midyat'ın mistik atmosferi.</p>
+                    <a href="https://wa.me/905352050573" class="btn-solid" style="width: 100%; text-align: center; padding: 12px; border-radius: 6px;" data-i18n="book-btn">Rezerve Et</a>
                 </div>
             </div>
 
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

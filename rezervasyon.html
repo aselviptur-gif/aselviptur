@@ -2,100 +2,81 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VIP Rezervasyon - Asel VIP Tur</title>
-    
-    <link rel="stylesheet" href="style.css?v=2.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Rezervasyon - Asel VIP</title>
+    <link rel="stylesheet" href="vip-style.css?v=10.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
-        /* Geri Dönüş Butonu Stili */
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding: 0 20px; }
-        .back-btn { color: #D4AF37; text-decoration: none; font-weight: bold; border: 1px solid rgba(212,175,55,0.5); padding: 10px 20px; border-radius: 4px; transition: 0.3s; display: inline-block; background: rgba(0,0,0,0.5); }
+        /* Form Sayfasına Özel Kırılmaz Stiller */
+        .page-container { padding-top: 100px; padding-bottom: 50px; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;}
+        .back-btn { color: #D4AF37; text-decoration: none; font-weight: bold; border: 1px solid rgba(212,175,55,0.5); padding: 10px 20px; border-radius: 4px; transition: 0.3s; display: inline-block; background: rgba(0,0,0,0.5); align-self: flex-start; margin-left: 20px; margin-bottom: 30px;}
         .back-btn:hover { background: #D4AF37; color: #000; transform: translateX(-5px); }
         
-        /* Dil Seçenekleri Stili */
-        .lang-menu { display: flex; gap: 15px; }
-        .lang-btn { color: #888; font-weight: bold; cursor: pointer; transition: 0.3s; font-family: 'Cinzel', serif; font-size: 0.9rem; }
-        .lang-btn.active, .lang-btn:hover { color: #D4AF37; }
-        
-        /* VIP Form Kutuları - Karanlık Lüks Tema */
+        /* VIP Form Kutuları - Asla Bozulmayacak Şekilde Gömüldü */
         .vip-input, .vip-select {
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 20px;
-            background: #111;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 6px;
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
+            width: 100%; padding: 16px; margin-bottom: 20px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px;
+            color: #fff; font-family: 'Montserrat', sans-serif; font-size: 15px;
             transition: all 0.3s ease;
         }
         .vip-input:focus, .vip-select:focus {
-            border-color: #D4AF37;
-            outline: none;
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
-            background: #1a1a1a;
+            border-color: #D4AF37; outline: none;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2); background: rgba(20,20,20,0.9);
         }
         .vip-select option { background: #111; color: #fff; }
     </style>
 </head>
 <body>
 
-    <div style="max-width: 800px; margin: 0 auto; padding: 40px 0;">
-        
-        <div class="header-top">
-            <a href="index.html" class="back-btn" data-i18n="back-home"><i class="fa-solid fa-arrow-left"></i> Ana Sayfaya Dön</a>
-            
-            <div class="lang-menu">
-                <span class="lang-btn active" onclick="setLanguage('tr', this)">TR</span>
-                <span class="lang-btn" onclick="setLanguage('en', this)">EN</span>
-                <span class="lang-btn" onclick="setLanguage('ru', this)">RU</span>
-                <span class="lang-btn" onclick="setLanguage('de', this)">DE</span>
+    <header class="vip-header glass-element">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="logo.png" alt="Asel VIP"></a>
+            <div class="nav-right">
+                <div class="lang-menu">
+                    <span class="lang-btn active" onclick="setLanguage('tr', this)">TR</span><span class="lang-separator">|</span>
+                    <span class="lang-btn" onclick="setLanguage('en', this)">EN</span><span class="lang-separator">|</span>
+                    <span class="lang-btn" onclick="setLanguage('ru', this)">RU</span><span class="lang-separator">|</span>
+                    <span class="lang-btn" onclick="setLanguage('de', this)">DE</span>
+                </div>
             </div>
         </div>
+    </header>
 
-        <section id="rezervasyon" style="text-align: center;">
-            <h2 class="section-title" data-i18n="form-title" style="margin-bottom: 30px; color: #D4AF37; font-family: 'Cinzel', serif;">VIP Rezervasyon</h2>
+    <div class="page-container">
+        
+        <a href="index.html" class="back-btn" data-i18n="back-home"><i class="fa-solid fa-arrow-left"></i> ANA SAYFA</a>
+
+        <div class="glass-card" style="max-width: 600px; width: 90%; padding: 40px 30px;">
+            <h2 data-i18n="form-title" style="margin-bottom: 30px; color: #D4AF37; font-family: 'Cinzel', serif; text-align: center;">VIP Rezervasyon</h2>
             
-            <div class="card" style="max-width: 600px; margin: 0 auto; padding: 40px 30px; text-align: left; background: #0c0c0c; border: 1px solid rgba(212,175,55,0.15); border-radius: 12px;">
-                <form action="https://formspree.io/f/xojpyzyl" method="POST" class="vip-form">                
-                    
-                    <div class="input-group">
-                        <input type="text" name="Ad_Soyad" data-i18n-placeholder="f-name" placeholder="Adınız Soyadınız" required class="vip-input">
-                        <input type="tel" name="Telefon" data-i18n-placeholder="f-phone" placeholder="Telefon Numaranız" required class="vip-input">
-                    </div>
+            <form action="https://formspree.io/f/xojpyzyl" method="POST">                
+                <input type="text" name="Ad_Soyad" data-i18n-placeholder="f-name" placeholder="Adınız Soyadınız" required class="vip-input">
+                <input type="tel" name="Telefon" data-i18n-placeholder="f-phone" placeholder="Telefon Numaranız" required class="vip-input">
+                <input type="text" name="Alinis_Noktasi" data-i18n-placeholder="f-from" placeholder="Nereden Alınacaksınız?" required class="vip-input">
+                <input type="text" name="Varis_Noktasi" data-i18n-placeholder="f-to" placeholder="Nereye Gideceksiniz?" required class="vip-input">
 
-                    <div class="input-group">
-                        <input type="text" name="Alinis_Noktasi" data-i18n-placeholder="f-from" placeholder="Nereden Alınacaksınız?" required class="vip-input">
-                        <input type="text" name="Varis_Noktasi" data-i18n-placeholder="f-to" placeholder="Nereye Gideceksiniz?" required class="vip-input">
-                    </div>
+                <select name="music" class="vip-select">
+                    <option value="" disabled selected data-i18n="m-opt0">🎵 Araç İçi Müzik Tercihi</option>
+                    <option value="jazz" data-i18n="m-opt1">Caz & Blues</option>
+                    <option value="classical" data-i18n="m-opt2">Klasik Müzik</option>
+                    <option value="pop" data-i18n="m-opt3">Popüler / Güncel</option>
+                    <option value="silent" data-i18n="m-opt4">Sessiz Sürüş (Silent Ride)</option>
+                    <option value="arabesque" data-i18n="m-opt5">Damar Arabesk (VIP Özel)</option>
+                </select>
+                
+                <select name="scent" class="vip-select">
+                    <option value="" disabled selected data-i18n="s-opt0">🕯️ Araç Kokusu Tercihi</option>
+                    <option value="ocean" data-i18n="s-opt1">Okyanus Ferahlığı</option>
+                    <option value="woody" data-i18n="s-opt2">Odunsu & Deri (Vip)</option>
+                    <option value="vanilla" data-i18n="s-opt3">Vanilya & Çikolata</option>
+                </select>
 
-                    <div class="input-group">
-                        <select name="music" class="vip-select">
-                            <option value="" disabled selected data-i18n="m-opt0">🎵 Araç İçi Müzik Tercihi</option>
-                            <option value="jazz" data-i18n="m-opt1">Caz & Blues</option>
-                            <option value="classical" data-i18n="m-opt2">Klasik Müzik</option>
-                            <option value="pop" data-i18n="m-opt3">Popüler / Güncel</option>
-                            <option value="silent" data-i18n="m-opt4">Sessiz Sürüş (Silent Ride)</option>
-                            <option value="arabesque" data-i18n="m-opt5">Damar Arabesk (VIP Özel)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="input-group">
-                        <select name="scent" class="vip-select">
-                            <option value="" disabled selected data-i18n="s-opt0">🕯️ Araç Kokusu Tercihi</option>
-                            <option value="ocean" data-i18n="s-opt1">Okyanus Ferahlığı</option>
-                            <option value="woody" data-i18n="s-opt2">Odunsu & Deri (Vip)</option>
-                            <option value="vanilla" data-i18n="s-opt3">Vanilya & Çikolata</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn-book" data-i18n="f-submit" style="width: 100%; border-radius: 6px; font-size: 16px; border: none; padding: 15px; background: linear-gradient(45deg, #b8860b, #D4AF37); color: #000; font-weight: bold; cursor: pointer;">Talebi Gönder</button>
-                </form>
-            </div>
-        </section>
+                <button type="submit" class="btn-solid" data-i18n="f-submit" style="width: 100%; border-radius: 6px; font-size: 16px; padding: 15px; border: none; cursor: pointer; margin-top: 10px;">Talebi Gönder</button>
+            </form>
+        </div>
     </div>
 
     <script src="script.js"></script>
