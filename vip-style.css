@@ -124,7 +124,27 @@ a { text-decoration: none; }
    ========================================= */
 .driver-portrait { width: 100%; max-width: 380px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.03); border-radius: 8px;}
 .portrait-shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-.portrait-frame { width: 100%; height: 380px; }
+./* ŞOFÖRLER (KAFASI KESİLMEYEN VE 5 YAZIYI SIĞDIRAN KARE TABLO) */
+.driver-portrait { width: 100%; max-width: 380px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.03); border-radius: 8px;}
+.portrait-shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+/* İŞTE SİHİRLİ DOKUNUŞ: Sabit yükseklik yerine 1/1 Tam Kare oranı */
+.portrait-frame { 
+    width: 100%; 
+    aspect-ratio: 1 / 1; /* Çerçeveyi tam kare yapar, resim asla kesilmez */
+    height: auto; 
+}
+.portrait-frame img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center 10%; /* Tam yüz hizasına odaklanır */
+    filter: grayscale(15%); 
+    transition: 0.5s ease; 
+    border-radius: 0 !important; 
+}
+.driver-portrait:hover .portrait-frame img { filter: grayscale(0%); transform: scale(1.03); }
+
 
 /* SİHİRLİ SATIR BURADA: object-position: top center; eklendi */
 .portrait-frame img { 
