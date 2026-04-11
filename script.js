@@ -53,15 +53,12 @@ function setLanguage(lang, btn) {
     });
 
     const safeLang = (translations[lang] && translations[lang]['p-name']) ? lang : 'tr';
-    const fName = document.getElementById('f-name');
-    const fMail = document.getElementById('f-mail');
-    const fDate = document.getElementById('f-date');
-    const fMsg = document.getElementById('f-msg');
-
-    if(fName) fName.placeholder = translations[safeLang]['p-name'];
-    if(fMail) fMail.placeholder = translations[safeLang]['p-mail'];
-    if(fDate) fDate.placeholder = translations[safeLang]['p-date'];
-    if(fMsg) fMsg.placeholder = translations[safeLang]['p-msg'];
+    
+    // Form Elemanları Dil Değişimi (Güvenli Kontrol)
+    const formInputs = document.querySelectorAll('.vip-input, .vip-select');
+    formInputs.forEach(input => {
+        if(input.name === "Ad_Soyad") input.placeholder = translations[safeLang]['p-name'];
+    });
     
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.remove('active');
@@ -108,7 +105,7 @@ function openDriverModal(name, role, img, desc, phone, email) {
     const modal = document.getElementById("driverModal"); 
     if(modal) {
         modal.style.display = "block";
-        document.getElementById("m-driver-data").innerHTML = `<img src="${img}" style="width:120px; height:120px; border-radius:50%; border:2px solid #D4AF37; margin-bottom:15px; object-fit:cover;"><h3 style="color:#D4AF37; font-family:'Cinzel'; margin-bottom:5px;">${name}</h3><h4 style="color:#fff; font-weight:300; margin-bottom:15px; font-size:0.9rem;">${role}</h4><p style="color:#aaa; margin-bottom:25px; font-size:0.9rem;">${desc}</p><div style="display:flex; flex-direction:column; gap:10px;"><a href="tel:${phone}" style="background:#0a0a0a; color:#D4AF37; display:block; padding:15px; border:1px solid #D4AF37; text-decoration:none; font-weight:bold;"><i class="fa-solid fa-phone"></i> HEMEN ARA</a><a href="mailto:${email}" style="background:#0a0a0a; color:#fff; display:block; padding:15px; border:1px solid #333; text-decoration:none;"><i class="fa-solid fa-envelope"></i> E-POSTA</a></div>`;
+        document.getElementById("m-driver-data").innerHTML = `<img src="${img}" style="width:120px; height:120px; border-radius:50%; border:2px solid #D4AF37; margin-bottom:15px; object-fit:cover;"><h3 style="color:#D4AF37; font-family:'Cinzel'; margin-bottom:5px;">${name}</h3><h4 style="color:#fff; font-weight:300; margin-bottom:15px; font-size:0.9rem;">${role}</h4><p style="color:#aaa; margin-bottom:25px; font-size:0.9rem;">${desc}</p><div style="display:flex; flex-direction:column; gap:10px;"><a href="tel:${phone}" style="background:#111; color:#D4AF37; display:block; padding:15px; border:1px solid rgba(212,175,55,0.5); border-radius:4px; text-decoration:none; font-weight:bold;"><i class="fa-solid fa-phone"></i> HEMEN ARA</a><a href="mailto:${email}" style="background:#0a0a0a; color:#fff; display:block; padding:15px; border:1px solid #333; border-radius:4px; text-decoration:none;"><i class="fa-solid fa-envelope"></i> E-POSTA</a></div>`;
     }
 }
 function openVideoModal(src) { const v = document.getElementById("fleetVideo"); if(v) { v.src = src; document.getElementById("videoModal").style.display = "block"; v.play(); } }
@@ -118,22 +115,44 @@ function openCallbackModal() { openDriverModal('Sizi Arayalım', 'VIP Müşteri 
 
 // --- 6. İSTATİSTİK SAYAÇLARI ---
 const counters = document.querySelectorAll('.stat-count');
-counters.forEach(counter => { const updateCount = () => { const target = +counter.getAttribute('data-target'); const count = +counter.innerText; const inc = target / 100; if (count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 20); } else { counter.innerText = target + "+"; } }; updateCount(); });
-
-// --- 7. ALTIN İMLEÇ ---
-const cursorDot = document.createElement("div"); cursorDot.id = "cursor-dot";
-const cursorOutline = document.createElement("div"); cursorOutline.id = "cursor-outline";
-document.body.appendChild(cursorDot); document.body.appendChild(cursorOutline);
-window.addEventListener("mousemove", (e) => {
-    cursorDot.style.left = `${e.clientX}px`; cursorDot.style.top = `${e.clientY}px`;
-    cursorOutline.animate({ left: `${e.clientX - 20}px`, top: `${e.clientY - 20}px` }, { duration: 500, fill: "forwards" });
+counters.forEach(counter => { 
+    const updateCount = () => { 
+        const target = +counter.getAttribute('data-target'); 
+        const count = +counter.innerText; 
+        const inc = target / 100; 
+        if (count < target) { 
+            counter.innerText = Math.ceil(count + inc); 
+            setTimeout(updateCount, 20); 
+        } else { 
+            counter.innerText = target + "+"; 
+        } 
+    }; 
+    updateCount(); 
 });
+
+// --- 7. ALTIN İMLEÇ (Performans Optimize Edildi) ---
+// Not: Sadece masaüstü cihazlarda çalışması için kontrol eklendi
+if (window.matchMedia("(pointer: fine)").matches) {
+    const cursorDot = document.createElement("div"); cursorDot.id = "cursor-dot";
+    const cursorOutline = document.createElement("div"); cursorOutline.id = "cursor-outline";
+    document.body.appendChild(cursorDot); document.body.appendChild(cursorOutline);
+    
+    let cursorX = 0, cursorY = 0;
+    
+    window.addEventListener("mousemove", (e) => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+        cursorDot.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+        // Daha hafif ve akıcı bir takip animasyonu
+        cursorOutline.style.transform = `translate3d(${cursorX - 20}px, ${cursorY - 20}px, 0)`;
+    });
+}
 
 // --- 8. SAĞ TIK ENGELİ ---
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.onkeydown = function(e) { if(e.keyCode == 123) return false; };
 
-// --- 9. AÇILIŞ EKRANI (LOADER) GİZLEME (GARANTİLİ KOD BURADA) ---
+// --- 9. AÇILIŞ EKRANI (LOADER) GİZLEME ---
 function hideLoader() { 
     const loader = document.getElementById("loader"); 
     if(loader) { 
@@ -147,5 +166,5 @@ function hideLoader() {
 // Sayfa yüklendiğinde kapat
 window.addEventListener('load', hideLoader);
 
-// Ne olursa olsun, 3 saniye sonra ekranı kesinlikle kapat
-setTimeout(hideLoader, 3000); 
+// Ne olursa olsun, 2.5 saniye sonra ekranı kesinlikle kapat
+setTimeout(hideLoader, 2500);

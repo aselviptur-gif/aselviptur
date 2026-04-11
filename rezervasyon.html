@@ -2,71 +2,89 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VIP Rezervasyon - Asel VIP Tur</title>
-    <link rel="stylesheet" href="style.css?v=2.0">
-
+    
+    <link rel="stylesheet" href="style.css?v=2.1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Sadece bu sayfaya özel ufak düzeltmeler (gerekirse) */
-        .vip-input {
+        /* Geri Dönüş Butonu Stili */
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding: 0 20px; }
+        .back-btn { color: #D4AF37; text-decoration: none; font-weight: bold; border: 1px solid rgba(212,175,55,0.5); padding: 10px 20px; border-radius: 4px; transition: 0.3s; display: inline-block; background: rgba(0,0,0,0.5); }
+        .back-btn:hover { background: #D4AF37; color: #000; transform: translateX(-5px); }
+        
+        /* VIP Form Kutuları - Karanlık Lüks Tema */
+        .vip-input, .vip-select {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
+            padding: 16px;
+            margin-bottom: 20px;
+            background: #111;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 6px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
         }
-        .vip-select {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+        .vip-input:focus, .vip-select:focus {
+            border-color: #D4AF37;
+            outline: none;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+            background: #1a1a1a;
         }
+        .vip-select option { background: #111; color: #fff; }
     </style>
 </head>
 <body>
 
-    <div style="padding: 20px; text-align: left;">
-        <a href="index.html" style="text-decoration: none; color: #d4af37; font-weight: bold; font-size: 16px;">&larr; Ana Sayfaya Dön</a>
-    </div>
-
-    <section id="rezervasyon" class="section alt-bg">
-        <h2 class="section-title" data-i18n="form-title">VIP Rezervasyon</h2>
-        <div class="contact-container" style="max-width: 600px; margin: 0 auto; padding: 20px;">
-            <form action="https://formspree.io/f/xojpyzyl" method="POST" class="vip-form">                
-                
-                <div class="input-group">
-                    <input type="text" name="Ad_Soyad" placeholder="Adınız Soyadınız" required class="vip-input">
-                    <input type="tel" name="Telefon" placeholder="Telefon Numaranız" required class="vip-input">
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="Alinis_Noktasi" placeholder="Nereden Alınacaksınız?" required class="vip-input">
-                    <input type="text" name="Varis_Noktasi" placeholder="Nereye Gideceksiniz?" required class="vip-input">
-                </div>
-
-                <div class="input-group">
-                    <select name="music" class="vip-select">
-                        <option value="" disabled selected>🎵 Araç İçi Müzik Tercihi</option>
-                        <option value="jazz">Caz & Blues</option>
-                        <option value="classical">Klasik Müzik</option>
-                        <option value="pop">Popüler / Güncel</option>
-                        <option value="silent">Sessiz Sürüş (Silent Ride)</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <select name="scent" class="vip-select">
-                        <option value="" disabled selected>🕯️ Araç Kokusu Tercihi</option>
-                        <option value="ocean">Okyanus Ferahlığı</option>
-                        <option value="woody">Odunsu & Deri (Vip)</option>
-                        <option value="vanilla">Vanilya & Çikolata</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="submit-btn" style="width: 100%; padding: 15px; background-color: #d4af37; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 6px; font-size: 16px;">Talebi Gönder</button>
-            </form>
+    <div style="max-width: 800px; margin: 0 auto; padding: 40px 0;">
+        
+        <div class="header-top">
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Ana Sayfaya Dön</a>
         </div>
-    </section>
+
+        <section id="rezervasyon" style="text-align: center;">
+            <h2 class="section-title" data-i18n="form-title" style="margin-bottom: 30px;">VIP Rezervasyon</h2>
+            
+            <div class="card" style="max-width: 600px; margin: 0 auto; padding: 40px 30px; text-align: left;">
+                <form action="https://formspree.io/f/xojpyzyl" method="POST" class="vip-form">                
+                    
+                    <div class="input-group">
+                        <input type="text" name="Ad_Soyad" placeholder="Adınız Soyadınız" required class="vip-input">
+                        <input type="tel" name="Telefon" placeholder="Telefon Numaranız" required class="vip-input">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="Alinis_Noktasi" placeholder="Nereden Alınacaksınız?" required class="vip-input">
+                        <input type="text" name="Varis_Noktasi" placeholder="Nereye Gideceksiniz?" required class="vip-input">
+                    </div>
+
+                    <div class="input-group">
+                        <select name="music" class="vip-select">
+                            <option value="" disabled selected>🎵 Araç İçi Müzik Tercihi</option>
+                            <option value="jazz">Caz & Blues</option>
+                            <option value="classical">Klasik Müzik</option>
+                            <option value="pop">Popüler / Güncel</option>
+                            <option value="silent">Sessiz Sürüş (Silent Ride)</option>
+                            <option value="arabesque">Damar Arabesk (VIP Özel)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <select name="scent" class="vip-select">
+                            <option value="" disabled selected>🕯️ Araç Kokusu Tercihi</option>
+                            <option value="ocean">Okyanus Ferahlığı</option>
+                            <option value="woody">Odunsu & Deri (Vip)</option>
+                            <option value="vanilla">Vanilya & Çikolata</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-book" style="width: 100%; border-radius: 6px; font-size: 16px; border: none;">Talebi Gönder</button>
+                </form>
+            </div>
+        </section>
+    </div>
 
 </body>
 </html>
