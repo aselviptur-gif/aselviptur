@@ -1,1 +1,301 @@
-<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rezervasyon Takibi | Asel VIP Tur</title><meta name="description" content="Asel VIP Tur rezervasyon kodunuz ve telefon doğrulamanız ile transfer durumunu görüntüleyin."><link rel="stylesheet" href="assets/css/app.css"><link rel="icon" href="assets/images/favicon.png"></head><body><main class="panel-shell"><a href="index.html">← Ana sayfa</a><h1>Rezervasyon Takibi</h1><p>Rezervasyon kodunuz ve telefon numaranızın son dört hanesiyle sorgulayın.</p><form id="trackingForm" class="booking-form"><label>Rezervasyon kodu<input name="code" required placeholder="ASEL-26-XXXXXX"></label><label>Telefonun son 4 hanesi<input name="phone_last_four" required inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="0573"></label><button type="submit">Durumu Görüntüle</button></form><div id="trackingResult" hidden></div></main><script src="assets/js/config.js"></script><script src="assets/js/platform.js"></script></body></html>
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rezervasyon Takibi | Asel VIP Tur</title><meta name="description" content="Asel VIP Tur rezervasyon kodunuz ve telefon doğrulamanız ile transfer durumunu görüntüleyin."><link rel="stylesheet" href="assets/css/app.css"><link rel="icon" href="assets/images/favicon.png"></head><body><main>
+  <section class="page-hero compact-page-hero">
+    <div class="container tracking-page-container">
+      <div class="eyebrow">Rezervasyon durumu</div>
+
+      <h1>Aracınız hazır mı?</h1>
+
+      <p class="muted page-intro">
+        Rezervasyon kodunuz ve telefon numaranızın son
+        dört hanesiyle aracınızın son durumunu öğrenin.
+      </p>
+
+      <form id="simpleTrackingForm" class="simple-tracking-form">
+        <label>
+          Rezervasyon Kodu
+          <input
+            id="simpleTrackingCode"
+            name="booking_code"
+            type="text"
+            placeholder="ASEL-26-XXXXXXXX"
+            maxlength="40"
+            autocomplete="off"
+            required
+          >
+        </label>
+
+        <label>
+          Telefonun Son 4 Hanesi
+          <input
+            id="simpleTrackingPhone"
+            name="phone_last_four"
+            type="tel"
+            inputmode="numeric"
+            pattern="[0-9]{4}"
+            maxlength="4"
+            placeholder="1234"
+            required
+          >
+        </label>
+
+        <button
+          id="simpleTrackingButton"
+          class="btn btn-primary"
+          type="submit"
+        >
+          Durumu Sorgula
+        </button>
+      </form>
+
+      <div
+        id="simpleTrackingMessage"
+        class="simple-tracking-message"
+        hidden
+      ></div>
+
+      <section
+        id="simpleTrackingResult"
+        class="simple-tracking-result"
+        hidden
+        aria-live="polite"
+      >
+        <div
+          id="simpleTrackingStatusIcon"
+          class="simple-status-icon"
+        >
+          ●
+        </div>
+
+        <div>
+          <span class="simple-status-label">
+            Araç Durumu
+          </span>
+
+          <h2 id="simpleTrackingStatusTitle">
+            Hazırlanıyor
+          </h2>
+
+          <p id="simpleTrackingStatusText">
+            Rezervasyonunuz operasyon ekibimiz
+            tarafından hazırlanmaktadır.
+          </p>
+        </div>
+      </section>
+
+      <a
+        class="btn btn-secondary simple-support-button"
+        href="https://wa.me/905352050573"
+        rel="noopener noreferrer"
+      >
+        WhatsApp Destek
+      </a>
+    </div>
+  </section>
+</main><script src="assets/js/config.js"></script><script src="assets/js/platform.js"></script>
+<!-- ASEL_SIMPLE_TRACKING_START -->
+<script>
+(() => {
+  "use strict";
+
+  const form = document.querySelector(
+    "#simpleTrackingForm"
+  );
+
+  if (!form) return;
+
+  const codeInput = document.querySelector(
+    "#simpleTrackingCode"
+  );
+
+  const phoneInput = document.querySelector(
+    "#simpleTrackingPhone"
+  );
+
+  const button = document.querySelector(
+    "#simpleTrackingButton"
+  );
+
+  const result = document.querySelector(
+    "#simpleTrackingResult"
+  );
+
+  const message = document.querySelector(
+    "#simpleTrackingMessage"
+  );
+
+  const title = document.querySelector(
+    "#simpleTrackingStatusTitle"
+  );
+
+  const description = document.querySelector(
+    "#simpleTrackingStatusText"
+  );
+
+  const icon = document.querySelector(
+    "#simpleTrackingStatusIcon"
+  );
+
+  const API_BASE =
+    window.ASEL_CONFIG?.apiBase ||
+    "https://aselviptur-api.aselviptur.workers.dev";
+
+  const hideMessage = () => {
+    message.hidden = true;
+    message.textContent = "";
+    message.className = "simple-tracking-message";
+  };
+
+  const showMessage = (text, type = "error") => {
+    message.hidden = false;
+    message.textContent = text;
+    message.className =
+      `simple-tracking-message ${type}`;
+  };
+
+  const resolveStatus = booking => {
+    const status = String(
+      booking.status || ""
+    ).toLowerCase();
+
+    const hasAssignment =
+      Boolean(booking.assigned_driver_id) ||
+      Boolean(booking.assigned_vehicle_id) ||
+      Boolean(booking.driver_name) ||
+      Boolean(booking.vehicle_label);
+
+    if (status === "cancelled") {
+      return {
+        state: "cancelled",
+        title: "Rezervasyon İptal Edildi",
+        text:
+          "Bu rezervasyon iptal edilmiştir. Yardım için WhatsApp üzerinden bize ulaşabilirsiniz."
+      };
+    }
+
+    if (status === "completed") {
+      return {
+        state: "completed",
+        title: "Transfer Tamamlandı",
+        text:
+          "Transferiniz tamamlanmıştır. Asel VIP Tur'u tercih ettiğiniz için teşekkür ederiz."
+      };
+    }
+
+    if (
+      status === "driver_assigned" ||
+      hasAssignment
+    ) {
+      return {
+        state: "ready",
+        title: "Araç Hazır",
+        text:
+          "Şoförünüz ve aracınız atanmıştır. Belirtilen saatte sizi karşılayacaktır."
+      };
+    }
+
+    return {
+      state: "preparing",
+      title: "Hazırlanıyor",
+      text:
+        "Rezervasyonunuz alınmıştır. Operasyon ekibimiz aracınızı ve şoförünüzü planlamaktadır."
+    };
+  };
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    hideMessage();
+    result.hidden = true;
+
+    const bookingCode =
+      codeInput.value.trim().toUpperCase();
+
+    const phoneLastFour =
+      phoneInput.value.replace(/\D/g, "");
+
+    if (!bookingCode) {
+      showMessage(
+        "Rezervasyon kodunu girin."
+      );
+      return;
+    }
+
+    if (!/^\d{4}$/.test(phoneLastFour)) {
+      showMessage(
+        "Telefon numaranızın son dört hanesini girin."
+      );
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Sorgulanıyor...";
+
+    try {
+      const url =
+        `${API_BASE}/api/bookings/` +
+        `${encodeURIComponent(bookingCode)}` +
+        `?phone_last_four=${encodeURIComponent(phoneLastFour)}`;
+
+      const response = await fetch(url, {
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      const responseText = await response.text();
+
+      let data = {};
+
+      try {
+        data = responseText
+          ? JSON.parse(responseText)
+          : {};
+      } catch {
+        throw new Error(
+          "Takip servisi geçersiz yanıt verdi."
+        );
+      }
+
+      if (!response.ok || data.success === false) {
+        throw new Error(
+          data.error ||
+          "Rezervasyon bulunamadı."
+        );
+      }
+
+      const booking =
+        data.booking ||
+        data.reservation ||
+        data;
+
+      const current = resolveStatus(booking);
+
+      result.dataset.state = current.state;
+      title.textContent = current.title;
+      description.textContent = current.text;
+      icon.textContent =
+        current.state === "ready" ? "✓" :
+        current.state === "completed" ? "✓" :
+        current.state === "cancelled" ? "×" :
+        "●";
+
+      result.hidden = false;
+      result.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    } catch (error) {
+      showMessage(
+        error.message ||
+        "Rezervasyon sorgulanamadı."
+      );
+    } finally {
+      button.disabled = false;
+      button.textContent = "Durumu Sorgula";
+    }
+  });
+})();
+</script>
+<!-- ASEL_SIMPLE_TRACKING_END -->
+
+</body></html>
