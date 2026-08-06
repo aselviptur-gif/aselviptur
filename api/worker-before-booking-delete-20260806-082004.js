@@ -134,7 +134,7 @@ function securityHeaders() {
 function corsHeaders(request) {
   const headers = {
     "Access-Control-Allow-Methods":
-      "GET, POST, PATCH, DELETE, OPTIONS",
+      "GET, POST, PATCH, OPTIONS",
     "Access-Control-Allow-Headers":
       "Content-Type, X-Admin-Key, Authorization",
     "Access-Control-Max-Age": "86400",
@@ -1890,120 +1890,6 @@ async function getAdminDashboard(request, env) {
   });
 }
 
-
-async function deleteAdminBooking(
-  request,
-  env,
-  bookingId
-) {
-  const authError =
-    await requireAdmin(request, env);
-
-  if (authError) {
-    return authError;
-  }
-
-  const id = Number(bookingId);
-
-  if (
-    !Number.isInteger(id) ||
-    id <= 0
-  ) {
-    return json(
-      request,
-      {
-        success: false,
-        error: "Geçersiz rezervasyon kimliği."
-      },
-      400
-    );
-  }
-
-  const booking = await env.DB
-    .prepare(`
-      SELECT
-        id,
-        booking_code,
-        status
-      FROM bookings
-      WHERE id = ?1
-      LIMIT 1
-    `)
-    .bind(id)
-    .first();
-
-  if (!booking) {
-    return json(
-      request,
-      {
-        success: false,
-        error: "Rezervasyon bulunamadı."
-      },
-      404
-    );
-  }
-
-  if (
-    booking.status !== "completed" &&
-    booking.status !== "cancelled"
-  ) {
-    return json(
-      request,
-      {
-        success: false,
-        error:
-          "Yalnızca tamamlanmış veya iptal edilmiş rezervasyonlar silinebilir."
-      },
-      409
-    );
-  }
-
-  const eventTable = await env.DB
-    .prepare(`
-      SELECT name
-      FROM sqlite_master
-      WHERE
-        type = 'table'
-        AND name = 'booking_events'
-      LIMIT 1
-    `)
-    .first();
-
-  const statements = [];
-
-  if (eventTable) {
-    statements.push(
-      env.DB
-        .prepare(`
-          DELETE FROM booking_events
-          WHERE booking_id = ?1
-        `)
-        .bind(id)
-    );
-  }
-
-  statements.push(
-    env.DB
-      .prepare(`
-        DELETE FROM bookings
-        WHERE id = ?1
-      `)
-      .bind(id)
-  );
-
-  await env.DB.batch(statements);
-
-  return json(
-    request,
-    {
-      success: true,
-      deleted_id: id,
-      booking_code: booking.booking_code
-    }
-  );
-}
-
-
 /* --------------------------------------------------
  * Router
  * -------------------------------------------------- */
@@ -2135,21 +2021,6 @@ export default {
         return listVehicles(
           request,
           env
-        );
-      }
-
-      const deleteMatch = pathname.match(
-        /^\/api\/admin\/bookings\/(\d+)$/
-      );
-
-      if (
-        request.method === "DELETE" &&
-        deleteMatch
-      ) {
-        return deleteAdminBooking(
-          request,
-          env,
-          deleteMatch[1]
         );
       }
 

@@ -850,3 +850,44 @@ a[href*="whatsapp"][class*="float"] {
     min-height: 145px !important;
   }
 }
+
+/* Admin rezervasyon işlemleri */
+
+.admin-booking-assignment {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin-top: 16px;
+}
+
+.admin-booking-assignment label {
+  display: grid;
+  gap: 7px;
+}
+
+.admin-booking-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 15px;
+}
+
+.admin-booking-action-buttons .button {
+  flex: 1 1 145px;
+}
+
+@media (max-width: 640px) {
+  .admin-booking-assignment {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-booking-action-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .admin-booking-action-buttons .button {
+    width: 100%;
+  }
+}

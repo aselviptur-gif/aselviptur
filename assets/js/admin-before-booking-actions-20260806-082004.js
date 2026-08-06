@@ -302,68 +302,6 @@
               : ""
           }
         </div>
-
-        ${
-          !["completed", "cancelled"].includes(booking.status)
-            ? `
-              <div class="admin-booking-assignment">
-                <label>
-                  Şoför
-                  <select class="booking-driver-select">
-                    ${buildDriverOptions(
-                      booking.assigned_driver_id
-                    )}
-                  </select>
-                </label>
-
-                <label>
-                  Araç
-                  <select class="booking-vehicle-select">
-                    ${buildVehicleOptions(
-                      booking.assigned_vehicle_id
-                    )}
-                  </select>
-                </label>
-              </div>
-
-              <div class="admin-booking-action-buttons">
-                <button
-                  type="button"
-                  class="button"
-                  data-action="assign"
-                >
-                  Şoföre Ata
-                </button>
-
-                <button
-                  type="button"
-                  class="button"
-                  data-action="complete"
-                >
-                  Tamamlandı
-                </button>
-
-                <button
-                  type="button"
-                  class="button button-danger"
-                  data-action="cancel"
-                >
-                  İptal
-                </button>
-              </div>
-            `
-            : `
-              <div class="admin-booking-action-buttons">
-                <button
-                  type="button"
-                  class="button button-danger"
-                  data-action="delete"
-                >
-                  Kalıcı Olarak Sil
-                </button>
-              </div>
-            `
-        }
       `;
 
       container.appendChild(card);
@@ -1503,103 +1441,11 @@
     }
   }
 
-  async function refreshBookingViews() {
-    await Promise.all([
-      loadDashboard(),
-      loadBookings()
-    ]);
-  }
-
-  async function assignBookingFromCard(card) {
-    const bookingId = Number(
-      card.dataset.bookingId || 0
-    );
-
-    const driverId = Number(
-      card.querySelector(
-        ".booking-driver-select"
-      )?.value || 0
-    );
-
-    const vehicleValue =
-      card.querySelector(
-        ".booking-vehicle-select"
-      )?.value || "";
-
-    if (!bookingId) {
-      throw new Error(
-        "Rezervasyon kimliği bulunamadı."
-      );
-    }
-
-    if (!driverId) {
-      throw new Error(
-        "Önce şoför seçmelisin."
-      );
-    }
-
-    const result = await apiRequest(
-      `/api/admin/bookings/${bookingId}/assign`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          driver_id: driverId,
-          vehicle_id: vehicleValue
-            ? Number(vehicleValue)
-            : null
-        })
-      }
-    );
-
-    await refreshBookingViews();
-
-    if (result.whatsapp_url) {
-      const openWhatsapp = confirm(
-        "Atama tamamlandı. Şoföre WhatsApp görevi açılsın mı?"
-      );
-
-      if (openWhatsapp) {
-        window.open(
-          result.whatsapp_url,
-          "_blank",
-          "noopener,noreferrer"
-        );
-      }
-    }
-  }
-
-  async function deleteBooking(card) {
-    const bookingId = Number(
-      card.dataset.bookingId || 0
-    );
-
-    if (!bookingId) {
-      throw new Error(
-        "Rezervasyon kimliği bulunamadı."
-      );
-    }
-
-    await apiRequest(
-      `/api/admin/bookings/${bookingId}`,
-      {
-        method: "DELETE"
-      }
-    );
-
-    await refreshBookingViews();
-  }
-
   async function handleBookingAction(event) {
-    const button = event.target.closest(
-      "[data-action]"
-    );
-
+    const button = event.target.closest("[data-action]");
     if (!button) return;
 
-    const card = button.closest(
-      ".admin-booking-card"
-    );
-
+    const card = button.closest(".admin-booking-card");
     if (!card) return;
 
     button.disabled = true;
@@ -1607,32 +1453,12 @@
     try {
       const action = button.dataset.action;
 
-      if (action === "assign") {
-        await assignBookingFromCard(card);
-
-        showMessage(
-          "Şoför ve araç rezervasyona atandı.",
-          "success"
-        );
-
-        return;
-      }
-
       if (action === "complete") {
-        const approved = confirm(
-          "Bu transfer tamamlandı olarak işaretlensin mi?"
-        );
-
-        if (!approved) return;
-
         await updateStatus(card, "completed");
-
         showMessage(
           "Rezervasyon tamamlandı olarak işaretlendi.",
           "success"
         );
-
-        return;
       }
 
       if (action === "cancel") {
@@ -1643,32 +1469,8 @@
         if (!approved) return;
 
         await updateStatus(card, "cancelled");
-
         showMessage(
           "Rezervasyon iptal edildi.",
-          "success"
-        );
-
-        return;
-      }
-
-      if (action === "delete") {
-        const firstApproval = confirm(
-          "Bu rezervasyon kalıcı olarak silinecek. Devam edilsin mi?"
-        );
-
-        if (!firstApproval) return;
-
-        const finalApproval = confirm(
-          "Bu işlem geri alınamaz. Rezervasyonu kesin olarak silmek istiyor musun?"
-        );
-
-        if (!finalApproval) return;
-
-        await deleteBooking(card);
-
-        showMessage(
-          "Rezervasyon kalıcı olarak silindi.",
           "success"
         );
       }
