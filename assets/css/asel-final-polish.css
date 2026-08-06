@@ -769,3 +769,84 @@ a[href*="whatsapp"][class*="float"] {
     font-size: 1.65rem;
   }
 }
+
+/* ==================================================
+   HOTFIX — HIZLI ERİŞİM KARTLARI
+   ================================================== */
+
+.home-navigation .home-action-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  width: 100% !important;
+  margin-top: 28px !important;
+}
+
+.home-navigation .home-action-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  min-width: 0 !important;
+  min-height: 180px !important;
+  padding: 24px !important;
+  gap: 8px !important;
+  white-space: normal !important;
+  text-decoration: none !important;
+  border: 1px solid rgba(224, 184, 94, 0.28) !important;
+  border-radius: 22px !important;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(224, 184, 94, 0.11),
+      transparent 52%
+    ),
+    #11151d !important;
+  color: #fff !important;
+  overflow: hidden !important;
+}
+
+.home-navigation .home-action-icon {
+  display: grid !important;
+  width: 50px !important;
+  height: 50px !important;
+  margin: 0 0 auto !important;
+  place-items: center !important;
+  border-radius: 14px !important;
+  background: rgba(224, 184, 94, 0.14) !important;
+  color: #f2ca73 !important;
+  font-size: 1.25rem !important;
+  font-weight: 900 !important;
+}
+
+.home-navigation .home-action-card strong {
+  display: block !important;
+  width: 100% !important;
+  color: #f2ca73 !important;
+  font-size: 1.2rem !important;
+  line-height: 1.25 !important;
+}
+
+.home-navigation .home-action-card small {
+  display: block !important;
+  width: 100% !important;
+  color: #aeb6c4 !important;
+  font-size: 0.88rem !important;
+  line-height: 1.55 !important;
+}
+
+@media (max-width: 900px) {
+  .home-navigation .home-action-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .home-navigation .home-action-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-navigation .home-action-card {
+    min-height: 145px !important;
+  }
+}
