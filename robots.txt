@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aselviptur.com/sitemap.xml

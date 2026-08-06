@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Asel VIP Tur Yönetim Paneli</title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/app.css"
+  >
+
+  <style>
+    .admin-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 32px auto 72px;
+    }
+
+    .admin-toolbar,
+    .admin-login-box,
+    .admin-booking-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .admin-login-box {
+      max-width: 520px;
+      margin: 80px auto;
+    }
+
+    .admin-login-box input,
+    .admin-toolbar input,
+    .admin-toolbar select,
+    .admin-booking-card select,
+    .admin-booking-card textarea {
+      width: 100%;
+      min-height: 44px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 10px 12px;
+      background: rgba(0,0,0,.2);
+      color: inherit;
+    }
+
+    .admin-toolbar {
+      display: grid;
+      grid-template-columns:
+        minmax(180px, 1fr)
+        minmax(160px, .6fr)
+        minmax(160px, .6fr)
+        auto auto;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    #adminMessage {
+      margin: 16px 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.08);
+    }
+
+    #adminMessage[data-type="error"] {
+      background: rgba(180,0,0,.18);
+    }
+
+    #adminMessage[data-type="success"] {
+      background: rgba(0,150,70,.18);
+    }
+
+    .admin-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0;
+      gap: 12px;
+    }
+
+    #bookingList {
+      display: grid;
+      gap: 18px;
+    }
+
+    .admin-booking-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      margin-left: 8px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: .82rem;
+      background: rgba(255,255,255,.1);
+    }
+
+    .status-pending {
+      background: rgba(255,165,0,.2);
+    }
+
+    .status-driver_assigned {
+      background: rgba(50,130,255,.2);
+    }
+
+    .status-completed {
+      background: rgba(0,170,80,.2);
+    }
+
+    .status-cancelled {
+      background: rgba(190,0,0,.2);
+    }
+
+    .admin-booking-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .admin-booking-grid div,
+    .admin-booking-note {
+      background: rgba(255,255,255,.035);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .admin-booking-grid span,
+    .admin-booking-note span {
+      display: block;
+      opacity: .7;
+      font-size: .82rem;
+      margin-bottom: 4px;
+    }
+
+
+
+
+    .button {
+      min-height: 42px;
+      padding: 9px 15px;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .button-danger {
+      background: #8e1d1d;
+      color: #fff;
+    }
+
+    .admin-assignment-info {
+      margin-top: 14px;
+      opacity: .8;
+      font-size: .92rem;
+    }
+
+    .admin-readonly-info {
+      display: grid;
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .admin-readonly-info > div {
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .admin-readonly-info span {
+      display: block;
+      margin-bottom: 5px;
+      opacity: .68;
+      font-size: .82rem;
+    }
+
+    .admin-readonly-info strong {
+      display: block;
+    }
+
+    #bookingEmpty {
+      padding: 48px 20px;
+      text-align: center;
+      opacity: .7;
+    }
+
+    .operation-dashboard {
+      margin: 22px 0;
+    }
+
+    .dashboard-heading,
+    .today-operation-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .dashboard-kicker {
+      margin: 0 0 4px;
+      opacity: .65;
+      font-size: .85rem;
+    }
+
+    .dashboard-heading h2,
+    .today-operation-head h3 {
+      margin: 0;
+    }
+
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .dashboard-stat,
+    .today-operation {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+    }
+
+    .dashboard-stat {
+      padding: 16px;
+    }
+
+    .dashboard-stat span {
+      display: block;
+      opacity: .68;
+      font-size: .82rem;
+      margin-bottom: 8px;
+    }
+
+    .dashboard-stat strong {
+      font-size: 1.65rem;
+    }
+
+    .today-operation {
+      margin-top: 16px;
+      padding: 20px;
+    }
+
+    .today-booking-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .today-booking-item {
+      display: grid;
+      grid-template-columns:
+        90px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .today-booking-time {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .today-booking-side {
+      display: grid;
+      justify-items: end;
+      gap: 10px;
+    }
+
+    .today-booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .today-booking-actions .button {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .today-booking-main strong,
+    .today-booking-main span {
+      display: block;
+    }
+
+    .today-booking-main span {
+      opacity: .72;
+      margin-top: 3px;
+    }
+
+    .today-empty {
+      padding: 28px 16px;
+      text-align: center;
+      opacity: .7;
+    }
+
+    .operation-alerts {
+      margin-bottom: 16px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .operation-alerts-head,
+    .operation-timeline-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .operation-alerts-head h3,
+    .operation-timeline-head h3 {
+      margin: 0;
+    }
+
+    .auto-refresh-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .88rem;
+      opacity: .85;
+    }
+
+    .auto-refresh-control input {
+      width: auto;
+      min-height: auto;
+    }
+
+    .operation-alert-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .operation-alert-item {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.035);
+      border-left: 4px solid rgba(255,255,255,.2);
+    }
+
+    .operation-alert-item.alert-overdue {
+      border-left-color: #e25a5a;
+      background: rgba(180,20,20,.12);
+    }
+
+    .operation-alert-item.alert-critical {
+      border-left-color: #ff9c35;
+      background: rgba(255,130,0,.10);
+    }
+
+    .operation-alert-item.alert-upcoming {
+      border-left-color: #4a9cff;
+      background: rgba(40,110,210,.10);
+    }
+
+    .operation-alert-time {
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .operation-alert-main strong,
+    .operation-alert-main span {
+      display: block;
+    }
+
+    .operation-alert-main span {
+      margin-top: 3px;
+      opacity: .72;
+    }
+
+    .operation-alert-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .operation-timeline-section {
+      margin-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 20px;
+    }
+
+    .operation-timeline {
+      position: relative;
+      display: grid;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 76px 22px minmax(0, 1fr);
+      gap: 10px;
+      min-height: 86px;
+    }
+
+    .timeline-time {
+      font-weight: 700;
+      padding-top: 3px;
+    }
+
+    .timeline-marker {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .timeline-marker::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: -8px;
+      width: 2px;
+      background: rgba(255,255,255,.14);
+    }
+
+    .timeline-item:last-child .timeline-marker::before {
+      bottom: 50%;
+    }
+
+    .timeline-dot {
+      position: relative;
+      z-index: 1;
+      width: 12px;
+      height: 12px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: #5c9eff;
+      box-shadow: 0 0 0 5px rgba(70,130,220,.14);
+    }
+
+    .timeline-content {
+      padding: 0 0 20px;
+    }
+
+    .timeline-content strong,
+    .timeline-content span {
+      display: block;
+    }
+
+    .timeline-content span {
+      margin-top: 3px;
+      opacity: .72;
+    }
+
+    .operation-modal[hidden] {
+      display: none;
+    }
+
+    .operation-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+
+    .operation-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(5px);
+    }
+
+    .operation-modal-dialog {
+      position: relative;
+      z-index: 1;
+      width: min(520px, 100%);
+      display: grid;
+      gap: 16px;
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: #111720;
+      box-shadow: 0 24px 80px rgba(0,0,0,.55);
+    }
+
+    .operation-modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .operation-modal-head h2 {
+      margin: 0;
+    }
+
+    .operation-modal-close {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 12px;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .operation-modal-dialog select {
+      width: 100%;
+      min-height: 46px;
+      margin-top: 6px;
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: rgba(0,0,0,.25);
+      color: inherit;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .operation-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .quick-assign-booking-info {
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.045);
+      line-height: 1.6;
+    }
+
+    .booking-detail-dialog {
+      width: min(720px, 100%);
+      max-height: calc(100vh - 36px);
+      overflow-y: auto;
+    }
+
+    .booking-detail-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .booking-detail-item,
+    .booking-detail-note {
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .booking-detail-item span,
+    .booking-detail-note span {
+      display: block;
+      margin-bottom: 5px;
+      font-size: .82rem;
+      opacity: .68;
+    }
+
+    .booking-detail-item strong {
+      display: block;
+      word-break: break-word;
+    }
+
+    .booking-detail-note {
+      margin-top: 12px;
+    }
+
+    .booking-detail-note p {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .booking-detail-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .booking-detail-contact a {
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      .admin-toolbar,
+      .admin-booking-grid,
+
+
+      .admin-readonly-info {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-booking-head,
+      .admin-summary {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .dashboard-stats {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .dashboard-heading,
+      .today-operation-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .today-booking-item {
+        grid-template-columns: 1fr;
+      }
+
+      .today-booking-side {
+        justify-items: stretch;
+      }
+
+      .today-booking-actions {
+        justify-content: flex-start;
+      }
+
+      .operation-alerts-head,
+      .operation-timeline-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .operation-alert-item {
+        grid-template-columns: 1fr;
+      }
+
+      .operation-alert-actions {
+        justify-content: flex-start;
+      }
+
+      .timeline-item {
+        grid-template-columns: 62px 18px minmax(0, 1fr);
+      }
+
+      .booking-detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/asel-theme.css?v=2">
+  <link rel="stylesheet" href="assets/css/asel-final-polish.css?v=1">
+</head>
+
+<body>
+  <main class="admin-shell">
+    <section id="adminLogin" class="admin-login-box">
+      <h1>Yönetici Girişi</h1>
+      <p>
+        Cloudflare Worker üzerinde tanımladığın
+        yönetici anahtarını gir.
+      </p>
+
+      <label for="adminKeyInput">
+        Yönetici anahtarı
+      </label>
+
+      <input
+        id="adminKeyInput"
+        type="password"
+        autocomplete="current-password"
+      >
+
+      <button
+        id="adminLoginButton"
+        type="button"
+        class="button"
+      >
+        Giriş Yap
+      </button>
+    </section>
+
+    <section id="adminPanel" hidden>
+      <div class="admin-summary">
+        <div>
+          <h1>Rezervasyon Yönetimi</h1>
+          <p>
+            Toplam sonuç:
+            <strong id="bookingCount">0</strong>
+          </p>
+        </div>
+
+        <button
+          id="adminLogoutButton"
+          type="button"
+          class="button"
+        >
+          Çıkış
+        </button>
+      </div>
+
+      <div id="adminMessage" hidden></div>
+      <section id="operationDashboard" class="operation-dashboard">
+        <div class="dashboard-heading">
+          <div>
+            <p class="dashboard-kicker">Günlük operasyon özeti</p>
+            <h2>Operasyon Merkezi</h2>
+          </div>
+
+          <button
+            id="refreshDashboard"
+            type="button"
+            class="button"
+          >
+            Dashboard Yenile
+          </button>
+        </div>
+
+        <section class="operation-alerts">
+          <div class="operation-alerts-head">
+            <div>
+              <p class="dashboard-kicker">Anlık operasyon</p>
+              <h3>Yaklaşan Transferler</h3>
+            </div>
+
+            <label class="auto-refresh-control">
+              <input
+                id="autoRefreshToggle"
+                type="checkbox"
+                checked
+              >
+              30 saniyede otomatik yenile
+            </label>
+          </div>
+
+          <div id="upcomingTransferEmpty" class="today-empty" hidden>
+            Yaklaşan veya gecikmiş transfer bulunmuyor.
+          </div>
+
+          <div id="upcomingTransferList" class="operation-alert-list"></div>
+        </section>
+
+        <div class="dashboard-stats">
+          <article class="dashboard-stat">
+            <span>Bekleyen</span>
+            <strong id="statPending">0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>Şoföre Atandı</span>
+            <strong id="statAssigned">0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>Tamamlandı</span>
+            <strong id="statCompleted">0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>İptal</span>
+            <strong id="statCancelled">0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>Bugünkü Transfer</span>
+            <strong id="statToday">0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>Atanmamış Bugünkü İş</span>
+            <strong id="statTodayUnassigned">0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>Bugünkü Yolcu</span>
+            <strong id="statTodayPassengers">0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>Bugünkü Tahmini Ciro</span>
+            <strong id="statTodayRevenue">€0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>Aktif Şoför</span>
+            <strong id="statDrivers">0</strong>
+          </article>
+
+          <article class="dashboard-stat">
+            <span>Aktif Araç</span>
+            <strong id="statVehicles">0</strong>
+          </article>
+        </div>
+
+        <div class="today-operation">
+          <div class="today-operation-head">
+            <div>
+              <h3>Bugün Kimler Geliyor?</h3>
+              <p id="dashboardDate">-</p>
+            </div>
+
+            <button
+              id="showTodayOnly"
+              type="button"
+              class="button"
+            >
+              Bugünkü İşleri Göster
+            </button>
+          </div>
+
+          <div id="todayBookingEmpty" class="today-empty" hidden>
+            Bugün için planlanmış transfer bulunmuyor.
+          </div>
+
+          <div id="todayBookingList" class="today-booking-list"></div>
+
+          <section class="operation-timeline-section">
+            <div class="operation-timeline-head">
+              <h3>Günlük Zaman Çizelgesi</h3>
+              <span id="timelineCount">0 transfer</span>
+            </div>
+
+            <div id="operationTimeline" class="operation-timeline"></div>
+          </section>
+        </div>
+      </section>
+
+
+      <section class="admin-toolbar">
+        <label>
+          Ara
+          <input
+            id="searchFilter"
+            type="search"
+            placeholder="Kod, müşteri, telefon, rota..."
+          >
+        </label>
+
+        <label>
+          Durum
+          <select id="statusFilter">
+            <option value="all">Tümü</option>
+            <option value="pending">Bekliyor</option>
+            <option value="driver_assigned">
+              Şoföre Atandı
+            </option>
+            <option value="completed">
+              Tamamlandı
+            </option>
+            <option value="cancelled">
+              İptal Edildi
+            </option>
+          </select>
+        </label>
+
+        <label>
+          Tarih
+          <input
+            id="dateFilter"
+            type="date"
+          >
+        </label>
+
+        <button
+          id="applyFilters"
+          type="button"
+          class="button"
+        >
+          Filtrele
+        </button>
+
+        <button
+          id="clearFilters"
+          type="button"
+          class="button"
+        >
+          Temizle
+        </button>
+      </section>
+
+      <button
+        id="refreshBookings"
+        type="button"
+        class="button"
+      >
+        Yenile
+      </button>
+
+      <div id="bookingEmpty" hidden>
+        Rezervasyon bulunamadı.
+      </div>
+
+      <section id="bookingList"></section>
+    </section>
+  </main>
+
+  <div
+    id="bookingDetailModal"
+    class="operation-modal"
+    hidden
+  >
+    <div
+      class="operation-modal-backdrop"
+      data-close-detail-modal
+    ></div>
+
+    <section
+      class="operation-modal-dialog booking-detail-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bookingDetailTitle"
+    >
+      <div class="operation-modal-head">
+        <div>
+          <p class="dashboard-kicker">Rezervasyon bilgileri</p>
+          <h2 id="bookingDetailTitle">Rezervasyon Detayı</h2>
+        </div>
+
+        <button
+          type="button"
+          class="operation-modal-close"
+          data-close-detail-modal
+          aria-label="Pencereyi kapat"
+        >
+          ×
+        </button>
+      </div>
+
+      <div id="bookingDetailContent"></div>
+
+      <div class="operation-modal-actions">
+        <button
+          type="button"
+          class="button"
+          data-close-detail-modal
+        >
+          Kapat
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <div
+    id="quickAssignModal"
+    class="operation-modal"
+    hidden
+  >
+    <div
+      class="operation-modal-backdrop"
+      data-close-assign-modal
+    ></div>
+
+    <section
+      class="operation-modal-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="quickAssignTitle"
+    >
+      <div class="operation-modal-head">
+        <div>
+          <p class="dashboard-kicker">Hızlı işlem</p>
+          <h2 id="quickAssignTitle">Şoför ve Araç Ata</h2>
+        </div>
+
+        <button
+          type="button"
+          class="operation-modal-close"
+          data-close-assign-modal
+          aria-label="Pencereyi kapat"
+        >
+          ×
+        </button>
+      </div>
+
+      <div id="quickAssignBookingInfo" class="quick-assign-booking-info"></div>
+
+      <label>
+        Şoför
+        <select id="quickAssignDriver">
+          <option value="">Şoför seçin</option>
+        </select>
+      </label>
+
+      <label>
+        Araç
+        <select id="quickAssignVehicle">
+          <option value="">Araç seçin</option>
+        </select>
+      </label>
+
+      <div class="operation-modal-actions">
+        <button
+          id="quickAssignSubmit"
+          type="button"
+          class="button"
+        >
+          Ata ve WhatsApp'ı Aç
+        </button>
+
+        <button
+          type="button"
+          class="button"
+          data-close-assign-modal
+        >
+          Vazgeç
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <script src="assets/js/config.js?v=10"></script>
+  <script src="assets/js/admin.js?v=41"></script>
+  <script src="assets/js/asel-final-polish.js?v=1"></script>
+</body>
+</html>
