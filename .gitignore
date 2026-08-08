@@ -3,3 +3,4 @@
 .DS_Store
 Thumbs.db
 .trashed-*
+api/worker.before-axiom-full-sync.js
