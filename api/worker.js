@@ -1262,6 +1262,26 @@ async function updateBookingStatus(
  * -------------------------------------------------- */
 
 
+async function axiomDiagnostic(
+  request,
+  env
+) {
+  const key =
+    env.AXIOM_INTEGRATION_KEY || "";
+
+  return json(
+    request,
+    {
+      success: true,
+      axiom_key_present:
+        Boolean(key),
+      axiom_key_length:
+        key.length
+    }
+  );
+}
+
+
 async function exportAxiomSnapshot(
   request,
   env
@@ -2190,6 +2210,16 @@ export default {
         pathname === "/api/admin/bookings"
       ) {
         return listAdminBookings(
+          request,
+          env
+        );
+      }
+
+      if (
+        request.method === "GET" &&
+        pathname === "/api/integrations/axiom/diagnostic"
+      ) {
+        return axiomDiagnostic(
           request,
           env
         );
