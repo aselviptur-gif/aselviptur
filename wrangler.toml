@@ -7,5 +7,4 @@ workers_dev = true
 [[d1_databases]]
 binding = "DB"
 database_name = "aselviptur-production"
-database_id =  "03e532d7-0f2d-4016-917a-62e73b657829
-"
+database_id = "03e532d7-0f2d-4016-917a-62e73b657829"
