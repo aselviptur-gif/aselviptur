@@ -1262,102 +1262,6 @@ async function updateBookingStatus(
  * -------------------------------------------------- */
 
 
-async function axiomDiagnostic(
-  request,
-  env
-) {
-  const key =
-    env.AXIOM_INTEGRATION_KEY || "";
-
-  return json(
-    request,
-    {
-      success: true,
-      axiom_key_present:
-        Boolean(key),
-      axiom_key_length:
-        key.length
-    }
-  );
-}
-
-
-async function exportAxiomSnapshot(
-  request,
-  env
-) {
-  const providedKey =
-    request.headers.get(
-      "X-Axiom-Integration-Key"
-    ) || "";
-
-  if (
-    !env.AXIOM_INTEGRATION_KEY ||
-    providedKey !==
-      env.AXIOM_INTEGRATION_KEY
-  ) {
-    return json(
-      request,
-      {
-        success: false,
-        error:
-          "Integration yetkisi geçersiz."
-      },
-      401
-    );
-  }
-
-  const drivers = await env.DB
-    .prepare(`
-      SELECT *
-      FROM drivers
-      ORDER BY id ASC
-    `)
-    .all();
-
-  const vehicles = await env.DB
-    .prepare(`
-      SELECT *
-      FROM vehicles
-      ORDER BY id ASC
-    `)
-    .all();
-
-  const bookings = await env.DB
-    .prepare(`
-      SELECT *
-      FROM bookings
-      ORDER BY id ASC
-    `)
-    .all();
-
-  return json(
-    request,
-    {
-      success: true,
-
-      source:
-        "aselviptur.com",
-
-      schema_version:
-        1,
-
-      generated_at:
-        new Date().toISOString(),
-
-      drivers:
-        drivers.results || [],
-
-      vehicles:
-        vehicles.results || [],
-
-      bookings:
-        bookings.results || []
-    }
-  );
-}
-
-
 async function listDrivers(request, env) {
   const authError =
     await requireAdmin(request, env);
@@ -2210,26 +2114,6 @@ export default {
         pathname === "/api/admin/bookings"
       ) {
         return listAdminBookings(
-          request,
-          env
-        );
-      }
-
-      if (
-        request.method === "GET" &&
-        pathname === "/api/integrations/axiom/diagnostic"
-      ) {
-        return axiomDiagnostic(
-          request,
-          env
-        );
-      }
-
-      if (
-        request.method === "GET" &&
-        pathname === "/api/integrations/axiom/snapshot"
-      ) {
-        return exportAxiomSnapshot(
           request,
           env
         );
